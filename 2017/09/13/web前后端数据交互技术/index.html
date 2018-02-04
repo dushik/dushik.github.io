@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>web前后端数据交互技术 | 一两银子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一阶段：Formweb应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。 第二阶段：Ajax（Asynchronous JavaScript and XML）由JS脚本发送">
+  <meta name="description" content="第一阶段：Formweb应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。">
 <meta name="keywords" content="web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web前后端数据交互技术">
 <meta property="og:url" content="http://yoursite.com/2017/09/13/web前后端数据交互技术/index.html">
 <meta property="og:site_name" content="一两银子的博客">
-<meta property="og:description" content="第一阶段：Formweb应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。 第二阶段：Ajax（Asynchronous JavaScript and XML）由JS脚本发送">
-<meta property="og:updated_time" content="2018-02-04T10:26:01.845Z">
+<meta property="og:description" content="第一阶段：Formweb应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。">
+<meta property="og:updated_time" content="2018-02-04T14:35:02.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web前后端数据交互技术">
-<meta name="twitter:description" content="第一阶段：Formweb应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。 第二阶段：Ajax（Asynchronous JavaScript and XML）由JS脚本发送">
+<meta name="twitter:description" content="第一阶段：Formweb应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -183,6 +183,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="第一阶段：Form"><a href="#第一阶段：Form" class="headerlink" title="第一阶段：Form"></a>第一阶段：Form</h2><p>web应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。<br>缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。</p>
+<a id="more"></a>
 <h2 id="第二阶段：Ajax（Asynchronous-JavaScript-and-XML）"><a href="#第二阶段：Ajax（Asynchronous-JavaScript-and-XML）" class="headerlink" title="第二阶段：Ajax（Asynchronous JavaScript and XML）"></a>第二阶段：Ajax（Asynchronous JavaScript and XML）</h2><p>由JS脚本发送http请求，服务器只返回页面需要更新的那部分数据，JS根据返回的数据刷新页面的局部内容，而不是刷新整个页面。<br>优点：网络传输小、服务器负担小<br>缺点：没有解决对实时性的友好支持（比如聊天室或客服系统），如果需要持续地从服务器获取数据，需要不断请求</p>
 <h2 id="第三阶段：Comet"><a href="#第三阶段：Comet" class="headerlink" title="第三阶段：Comet"></a>第三阶段：Comet</h2><p>一种hack技术，基于http长连接的“服务器推”的技术。实现方式有很多种，比如基于Ajax的长轮询（long-polling）、封装好的Comet4J等。<br>比较简单的是基于Ajax的长轮询：web应用发出Ajax请求，服务器收到请求后，如果有数据就即刻返回，如果没数据，会等待一段时间（比如定时20秒），在等待的时间内，如果有数据就返回，如果一直没数据，则timeout的时候返回。web应用收到服务器的返回后，处理数据、更新页面，再继续请求。服务器在发送完数据到接收到一个新请求之前，如果有数据需要发送，则先缓存起来，等待接到下一次请求后再发送。<br>优点：基本解决了实时性的问题<br>缺点：服务器需要阻塞线程等待数据，如果连接请求多的话，得考虑使用复杂的技术释放线程给其他请求使用，不然可能会拖死服务器。需要客户端和服务器端协调好才能正常工作。</p>
 <h2 id="第四阶段：Websocket"><a href="#第四阶段：Websocket" class="headerlink" title="第四阶段：Websocket"></a>第四阶段：Websocket</h2><p>html5标准中的一种全双工通信规范，基于TCP协议，与http协议兼容，但不是http协议的一部分。<br>web应用（客户端）先发起一个Handshake请求，服务器应答之后，就可以双向交换数据了。<br>通信的两方都可以发起关闭的请求（通过发送一个Closing Handshake），对方收到请求后，回复一个相同的数据包，就关闭通信通道了。<br>优点：数据传输量极少、实时性好。</p>
@@ -303,6 +304,28 @@ var _hmt = _hmt || [];
     </div>
 </aside>
 
+
+
+
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg2Ni8xMDQxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
 
   
@@ -431,6 +454,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
@@ -443,15 +470,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,11 +482,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,15 +502,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Opencv 使用Rect选取与设置窗口ROI | 一两银子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先看一下Rect对象的定义：1typedef Rect_&amp;lt;int&amp;gt; Rect; 再看Rect_的定义：12345678910111213141516171819202122232425262728293031323334353637383940/*!  The 2D up-right rectangle class  The class represents a 2D rectang">
+  <meta name="description" content="首先看一下Rect对象的定义：1typedef Rect_&amp;lt;int&amp;gt; Rect; 再看Rect_的定义：">
 <meta name="keywords" content="Opencv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Opencv 使用Rect选取与设置窗口ROI">
 <meta property="og:url" content="http://yoursite.com/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/index.html">
 <meta property="og:site_name" content="一两银子的博客">
-<meta property="og:description" content="首先看一下Rect对象的定义：1typedef Rect_&amp;lt;int&amp;gt; Rect; 再看Rect_的定义：12345678910111213141516171819202122232425262728293031323334353637383940/*!  The 2D up-right rectangle class  The class represents a 2D rectang">
+<meta property="og:description" content="首先看一下Rect对象的定义：1typedef Rect_&amp;lt;int&amp;gt; Rect; 再看Rect_的定义：">
 <meta property="og:image" content="http://img.blog.csdn.net/20170917162355284?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-02-04T10:29:49.624Z">
+<meta property="og:updated_time" content="2018-02-04T14:34:32.352Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Opencv 使用Rect选取与设置窗口ROI">
-<meta name="twitter:description" content="首先看一下Rect对象的定义：1typedef Rect_&amp;lt;int&amp;gt; Rect; 再看Rect_的定义：12345678910111213141516171819202122232425262728293031323334353637383940/*!  The 2D up-right rectangle class  The class represents a 2D rectang">
+<meta name="twitter:description" content="首先看一下Rect对象的定义：1typedef Rect_&amp;lt;int&amp;gt; Rect; 再看Rect_的定义：">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170917162355284?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
   
@@ -185,7 +185,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="首先看一下Rect对象的定义："><a href="#首先看一下Rect对象的定义：" class="headerlink" title="首先看一下Rect对象的定义："></a><strong>首先看一下<em>Rect</em>对象的定义：</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef Rect_&lt;int&gt; Rect;</div></pre></td></tr></table></figure>
-<h4 id="再看Rect-的定义："><a href="#再看Rect-的定义：" class="headerlink" title="再看Rect_的定义："></a><strong>再看<em>Rect_</em>的定义：</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">/*!</div><div class="line">  The 2D up-right rectangle class</div><div class="line"></div><div class="line">  The class represents a 2D rectangle with coordinates of the specified data type.</div><div class="line">  Normally, cv::Rect ~ cv::Rect_&lt;int&gt; is used.</div><div class="line">*/</div><div class="line">template&lt;typename _Tp&gt; class Rect_</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    typedef _Tp value_type;</div><div class="line"></div><div class="line">    //! various constructors</div><div class="line">    Rect_();</div><div class="line">    Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height);</div><div class="line">    Rect_(const Rect_&amp; r);</div><div class="line">    Rect_(const CvRect&amp; r);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; org, const Size_&lt;_Tp&gt;&amp; sz);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; pt1, const Point_&lt;_Tp&gt;&amp; pt2);</div><div class="line"></div><div class="line">    Rect_&amp; operator = ( const Rect_&amp; r );</div><div class="line">    //! the top-left corner</div><div class="line">    Point_&lt;_Tp&gt; tl() const;</div><div class="line">    //! the bottom-right corner</div><div class="line">    Point_&lt;_Tp&gt; br() const;</div><div class="line"></div><div class="line">    //! size (width, height) of the rectangle</div><div class="line">    Size_&lt;_Tp&gt; size() const;</div><div class="line">    //! area (width*height) of the rectangle</div><div class="line">    _Tp area() const;</div><div class="line"></div><div class="line">    //! conversion to another data type</div><div class="line">    template&lt;typename _Tp2&gt; operator Rect_&lt;_Tp2&gt;() const;</div><div class="line">    //! conversion to the old-style CvRect</div><div class="line">    operator CvRect() const;</div><div class="line"></div><div class="line">    //! checks whether the rectangle contains the point</div><div class="line">    bool contains(const Point_&lt;_Tp&gt;&amp; pt) const;</div><div class="line"></div><div class="line">    _Tp x, y, width, height; //&lt; the top-left corner, as well as width and height of the rectangle</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="再看Rect-的定义："><a href="#再看Rect-的定义：" class="headerlink" title="再看Rect_的定义："></a><strong>再看<em>Rect_</em>的定义：</strong></h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">/*!</div><div class="line">  The 2D up-right rectangle class</div><div class="line"></div><div class="line">  The class represents a 2D rectangle with coordinates of the specified data type.</div><div class="line">  Normally, cv::Rect ~ cv::Rect_&lt;int&gt; is used.</div><div class="line">*/</div><div class="line">template&lt;typename _Tp&gt; class Rect_</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    typedef _Tp value_type;</div><div class="line"></div><div class="line">    //! various constructors</div><div class="line">    Rect_();</div><div class="line">    Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height);</div><div class="line">    Rect_(const Rect_&amp; r);</div><div class="line">    Rect_(const CvRect&amp; r);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; org, const Size_&lt;_Tp&gt;&amp; sz);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; pt1, const Point_&lt;_Tp&gt;&amp; pt2);</div><div class="line"></div><div class="line">    Rect_&amp; operator = ( const Rect_&amp; r );</div><div class="line">    //! the top-left corner</div><div class="line">    Point_&lt;_Tp&gt; tl() const;</div><div class="line">    //! the bottom-right corner</div><div class="line">    Point_&lt;_Tp&gt; br() const;</div><div class="line"></div><div class="line">    //! size (width, height) of the rectangle</div><div class="line">    Size_&lt;_Tp&gt; size() const;</div><div class="line">    //! area (width*height) of the rectangle</div><div class="line">    _Tp area() const;</div><div class="line"></div><div class="line">    //! conversion to another data type</div><div class="line">    template&lt;typename _Tp2&gt; operator Rect_&lt;_Tp2&gt;() const;</div><div class="line">    //! conversion to the old-style CvRect</div><div class="line">    operator CvRect() const;</div><div class="line"></div><div class="line">    //! checks whether the rectangle contains the point</div><div class="line">    bool contains(const Point_&lt;_Tp&gt;&amp; pt) const;</div><div class="line"></div><div class="line">    _Tp x, y, width, height; //&lt; the top-left corner, as well as width and height of the rectangle</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h4 id="从上面的定义至少可以发现两点："><a href="#从上面的定义至少可以发现两点：" class="headerlink" title="从上面的定义至少可以发现两点："></a><strong>从上面的定义至少可以发现两点：</strong></h4><ul>
 <li>类Rect_的类模板中的数据类型<em>Tp在Rect</em><int>中被指定为整型</int></li>
 <li>从Rect_的构造函数可以看出，其形参列表一共有6种形式</li>
@@ -320,6 +321,28 @@ var _hmt = _hmt || [];
 
 
 
+
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg2Ni8xMDQxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
   
   
   
@@ -446,6 +469,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
@@ -458,15 +485,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +497,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,15 +517,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

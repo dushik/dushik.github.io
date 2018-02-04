@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Ubuntu使用vim编辑器时方向键乱码和退格键不能使用的问题 | 一两银子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。解決方法：1.輸入命令卸載vim-tiny1sudo apt-get remove vim-common 2.輸入命令安裝vim-full 1sudo apt-get install vim 現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到/ect/vim/vimrc.">
+  <meta name="description" content="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。解決方法：1.輸入命令卸載vim-tiny1sudo apt-get remove vim-common">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu使用vim编辑器时方向键乱码和退格键不能使用的问题">
 <meta property="og:url" content="http://yoursite.com/2017/09/07/Ubuntu使用vim编辑器时方向键乱码和退格键不能使用的问题/index.html">
 <meta property="og:site_name" content="一两银子的博客">
-<meta property="og:description" content="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。解決方法：1.輸入命令卸載vim-tiny1sudo apt-get remove vim-common 2.輸入命令安裝vim-full 1sudo apt-get install vim 現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到/ect/vim/vimrc.">
-<meta property="og:updated_time" content="2018-02-04T10:05:22.694Z">
+<meta property="og:description" content="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。解決方法：1.輸入命令卸載vim-tiny1sudo apt-get remove vim-common">
+<meta property="og:updated_time" content="2018-02-04T14:34:56.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu使用vim编辑器时方向键乱码和退格键不能使用的问题">
-<meta name="twitter:description" content="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。解決方法：1.輸入命令卸載vim-tiny1sudo apt-get remove vim-common 2.輸入命令安裝vim-full 1sudo apt-get install vim 現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到/ect/vim/vimrc.">
+<meta name="twitter:description" content="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。解決方法：1.輸入命令卸載vim-tiny1sudo apt-get remove vim-common">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -183,6 +183,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="由於Ubuntu初始默認按裝的是Vim-tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。"><a href="#由於Ubuntu初始默認按裝的是Vim-tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。" class="headerlink" title="由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。"></a>由於Ubuntu初始默認按裝的是Vim.tiny即縮減版的Vim，而縮減版的Vim不支持語法高亮，方向鍵和退個鍵的使用。</h2><h3 id="解決方法："><a href="#解決方法：" class="headerlink" title="解決方法："></a>解決方法：</h3><p>1.輸入命令卸載vim-tiny<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get remove vim-common</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>2.輸入命令安裝vim-full</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install vim</div></pre></td></tr></table></figure>
 <h3 id="現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到-ect-vim-vimrc-tiny-將文件理的set-compatible設置成set-nocompatible，再在後面加一句set-backspace-2即可。"><a href="#現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到-ect-vim-vimrc-tiny-將文件理的set-compatible設置成set-nocompatible，再在後面加一句set-backspace-2即可。" class="headerlink" title="現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到/ect/vim/vimrc.tiny,將文件理的set compatible設置成set nocompatible，再在後面加一句set backspace=2即可。"></a>現在可以正常使用方向鍵了，但退個鍵還是不能正常使用，需找到<strong>/ect/vim/vimrc.tiny</strong>,將文件理的set compatible設置成<strong>set nocompatible</strong>，再在後面加一句<strong>set backspace=2</strong>即可。</h3><h3 id="注意：修改vimrc-tiny文件必須是root用戶才有權限對其操作"><a href="#注意：修改vimrc-tiny文件必須是root用戶才有權限對其操作" class="headerlink" title="注意：修改vimrc.tiny文件必須是root用戶才有權限對其操作"></a><strong>注意：</strong>修改vimrc.tiny文件必須是root用戶才有權限對其操作</h3>
@@ -302,6 +303,28 @@ var _hmt = _hmt || [];
     </div>
 </aside>
 
+
+
+
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg2Ni8xMDQxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
 
   
@@ -430,6 +453,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
@@ -442,15 +469,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,11 +481,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,15 +501,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

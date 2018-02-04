@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>数据结构-队列的实现 | 一两银子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据结构-队列队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：  append（insert） 入队 serve（delete）出队 retrieve 读队首 empty 判队为空 front永远指向队首元素，队首是允许删除的一端 rear永远指向队尾元素，队尾是允许插入的一端  利用数组实现顺序队列将面临“假溢出”的情况">
+  <meta name="description" content="数据结构-队列队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构-队列的实现">
 <meta property="og:url" content="http://yoursite.com/2018/01/17/数据结构-队列的实现/index.html">
 <meta property="og:site_name" content="一两银子的博客">
-<meta property="og:description" content="数据结构-队列队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：  append（insert） 入队 serve（delete）出队 retrieve 读队首 empty 判队为空 front永远指向队首元素，队首是允许删除的一端 rear永远指向队尾元素，队尾是允许插入的一端  利用数组实现顺序队列将面临“假溢出”的情况">
-<meta property="og:updated_time" content="2018-02-04T11:20:15.991Z">
+<meta property="og:description" content="数据结构-队列队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：">
+<meta property="og:updated_time" content="2018-02-04T14:27:43.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构-队列的实现">
-<meta name="twitter:description" content="数据结构-队列队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：  append（insert） 入队 serve（delete）出队 retrieve 读队首 empty 判队为空 front永远指向队首元素，队首是允许删除的一端 rear永远指向队尾元素，队尾是允许插入的一端  利用数组实现顺序队列将面临“假溢出”的情况">
+<meta name="twitter:description" content="数据结构-队列队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -183,6 +183,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数据结构-队列"><a href="#数据结构-队列" class="headerlink" title="数据结构-队列"></a>数据结构-队列</h1><p>队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：</p>
+<a id="more"></a>
 <ul>
 <li><strong>append（insert） 入队</strong></li>
 <li><strong>serve（delete）出队</strong></li>
@@ -315,6 +316,28 @@ var _hmt = _hmt || [];
 
 
 
+
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg2Ni8xMDQxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
   
   
   
@@ -441,6 +464,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
@@ -453,15 +480,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,11 +492,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,15 +512,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Linux服务器下查看tomcat服务是否启动，重启等基本操作 | 一两银子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先要进入tomcat的bin目录1cd /你的安装目录/tomcat/bin 查看服务启动情况12345678ps -ef|grep java此条命令具体含义ps:将某个进程显示出来-A 　显示所有程序。 -e 　此参数的效果和指定&amp;quot;A&amp;quot;参数相同。-f 　显示UID,PPIP,C与STIME栏位。 grep命令是查找 通过输出情况判断服务是否启动1234567如果返回类似以下">
+  <meta name="description" content="首先要进入tomcat的bin目录1cd /你的安装目录/tomcat/bin 查看服务启动情况">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux服务器下查看tomcat服务是否启动，重启等基本操作">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/Linux服务器下查看tomcat服务是否启动，重启等基本操作/index.html">
 <meta property="og:site_name" content="一两银子的博客">
-<meta property="og:description" content="首先要进入tomcat的bin目录1cd /你的安装目录/tomcat/bin 查看服务启动情况12345678ps -ef|grep java此条命令具体含义ps:将某个进程显示出来-A 　显示所有程序。 -e 　此参数的效果和指定&amp;quot;A&amp;quot;参数相同。-f 　显示UID,PPIP,C与STIME栏位。 grep命令是查找 通过输出情况判断服务是否启动1234567如果返回类似以下">
-<meta property="og:updated_time" content="2018-02-04T11:13:14.328Z">
+<meta property="og:description" content="首先要进入tomcat的bin目录1cd /你的安装目录/tomcat/bin 查看服务启动情况">
+<meta property="og:updated_time" content="2018-02-04T14:29:05.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux服务器下查看tomcat服务是否启动，重启等基本操作">
-<meta name="twitter:description" content="首先要进入tomcat的bin目录1cd /你的安装目录/tomcat/bin 查看服务启动情况12345678ps -ef|grep java此条命令具体含义ps:将某个进程显示出来-A 　显示所有程序。 -e 　此参数的效果和指定&amp;quot;A&amp;quot;参数相同。-f 　显示UID,PPIP,C与STIME栏位。 grep命令是查找 通过输出情况判断服务是否启动1234567如果返回类似以下">
+<meta name="twitter:description" content="首先要进入tomcat的bin目录1cd /你的安装目录/tomcat/bin 查看服务启动情况">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -183,7 +183,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="首先要进入tomcat的bin目录"><a href="#首先要进入tomcat的bin目录" class="headerlink" title="首先要进入tomcat的bin目录"></a>首先要进入tomcat的bin目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /你的安装目录/tomcat/bin</div></pre></td></tr></table></figure>
-<h3 id="查看服务启动情况"><a href="#查看服务启动情况" class="headerlink" title="查看服务启动情况"></a>查看服务启动情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ps -ef|grep java</div><div class="line"></div><div class="line">此条命令具体含义</div><div class="line">ps:将某个进程显示出来</div><div class="line">-A 　显示所有程序。 </div><div class="line">-e 　此参数的效果和指定&quot;A&quot;参数相同。</div><div class="line">-f 　显示UID,PPIP,C与STIME栏位。 </div><div class="line">grep命令是查找</div></pre></td></tr></table></figure>
+<h3 id="查看服务启动情况"><a href="#查看服务启动情况" class="headerlink" title="查看服务启动情况"></a>查看服务启动情况</h3><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ps -ef|grep java</div><div class="line"></div><div class="line">此条命令具体含义</div><div class="line">ps:将某个进程显示出来</div><div class="line">-A 　显示所有程序。 </div><div class="line">-e 　此参数的效果和指定&quot;A&quot;参数相同。</div><div class="line">-f 　显示UID,PPIP,C与STIME栏位。 </div><div class="line">grep命令是查找</div></pre></td></tr></table></figure>
 <h3 id="通过输出情况判断服务是否启动"><a href="#通过输出情况判断服务是否启动" class="headerlink" title="通过输出情况判断服务是否启动"></a>通过输出情况判断服务是否启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">如果返回类似以下信息说明tomcat没有启动</div><div class="line">502 19258  8770   0  7:14下午 ttys000    0:00.01 grep tomcat</div><div class="line">如果返回类似以下信息出现，说明tomcat是启动了，第一个是启动该进程的用户，第二个是该进程的id，第三个 是占用CPU的百分比，</div><div class="line">第四个是占用内存的百分比</div><div class="line"># ps -ef|grep tomcat</div><div class="line">root 7010     1   0  7:18下午 ttys000    0:28.01 /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin/java -Djava.util.logging.config.file=/Applications/apache-tomcat-7.0.62/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.endorsed.dirs=/Applications/apache-tomcat-7.0.62/endorsed -classpath /Applications/apache-tomcat-7.0.62/bin/bootstrap.jar:/Applications/apache-tomcat-7.0.62/bin/tomcat-juli.jar -Dcatalina.base=/Applications/apache-tomcat-7.0.62 -Dcatalina.home=/Applications/apache-tomcat-7.0.62 -Djava.io.tmpdir=/Applications/apache-tomcat-7.0.62/temp org.apache.catalina.startup.Bootstrap start</div><div class="line">    0 19392 19342   0  7:18下午 ttys000    0:00.00 grep tomcat</div></pre></td></tr></table></figure>
 <h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./startup.sh           //直接启动</div><div class="line"></div><div class="line">nohup ./startup.sh &amp;   //作为服务启动</div><div class="line"></div><div class="line">./catalina.sh run      //控制台动态输出方式启动，动态的显示tomcat控制台输出信息，Ctrl+c退出并停止服务</div></pre></td></tr></table></figure>
 <h3 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shutdown.sh</div></pre></td></tr></table></figure>
@@ -306,6 +307,28 @@ var _hmt = _hmt || [];
     </div>
 </aside>
 
+
+
+
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg2Ni8xMDQxOQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
 
   
@@ -434,6 +457,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
@@ -446,15 +473,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,11 +485,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,15 +505,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

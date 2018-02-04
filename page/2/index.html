@@ -181,60 +181,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数据结构-排序算法之插入排序（直接插入，二分插入，希尔，表插入）"><a href="#数据结构-排序算法之插入排序（直接插入，二分插入，希尔，表插入）" class="headerlink" title="数据结构-排序算法之插入排序（直接插入，二分插入，希尔，表插入）"></a>数据结构-排序算法之插入排序（直接插入，二分插入，希尔，表插入）</h1><p><strong>排序算法：</strong> 所谓排序，就是使一串记录，按照其中的某个或某些关键字的大小，递增或递减排列起来的操作。<br><strong>插入排序：</strong>排序过程的每一步将一个待排序的记录按其排序码值的大小插到前面已排好序的部分中的适当位置，知道全部记录插完为止。</p>
-<ul>
-<li><strong>直接插入排序：</strong>使用顺序查找寻找下一个待排元素的位置。</li>
-<li><strong>二分插入排序：</strong>使用二分查找寻找下一个待排元素的位置。</li>
-<li><strong>希尔排序：</strong>又称“缩小增量排序”，是直接插入排序算法的一种更高效的改进版本。希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。该方法实质上是一种分组插入方法。</li>
-<li><strong>表插入排序：</strong>不移动表中的任何记录，使用指针表示排序结果</li>
-</ul>
-<hr>
-<h4 id="直接插入排序算法"><a href="#直接插入排序算法" class="headerlink" title="直接插入排序算法"></a>直接插入排序算法</h4><p><strong>算法思想：</strong></p>
-<ul>
-<li><p><strong>把n个待排序的元素看成为一个有序表和一个无序表。开始时有序表中只包含1个元素，无序表中包含有n-1个元素，排序过程中每次从无序表中取出第一个元素，将它插入到有序表中的适当位置，使之成为新的有序表，重复n-1次可完成排序过程。</strong></p>
-</li>
-<li><p><strong>时间复杂度：假设被排序的数列中有N个数。遍历一趟的时间复杂度是O(N)，直接插入排序需要N-1次遍历，故算法的时间复杂度为O(N2)。</strong></p>
-</li>
-<li><p><strong>算法的稳定性：</strong></p>
-<ul>
-<li><strong>算法稳定性的定义：假设在数列中存在a[i]=a[j]，若在排序之前，a[i]在a[j]前面；并且排序之后，a[i]仍然在a[j]前面。则这个排序算法是稳定的！</strong></li>
-<li><strong>直接插入排序满足此定义，故直接插入排序是一种稳定的排序算法。</strong></li>
-</ul>
-</li>
-</ul>
-<p><strong>算法实现</strong>   算法的c++实现，实现代码来自<a href="http://jw1.nwnu.edu.cn/jpkc/2006/sjjg/" target="_blank" rel="external">王治和教授</a>数据结构课堂的总结</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">void straight_insertion_sort(int entry[],int count)&#123;</div><div class="line">	int first_unsorted;</div><div class="line">	int position;</div><div class="line">	int current;</div><div class="line">	for(first_unsorted=1;first_unsorted&lt;count;first_unsorted++)&#123;</div><div class="line">		if(entry[first_unsorted]&lt;entry[first_unsorted-1])&#123;//按照升序排列 </div><div class="line">			position=first_unsorted;</div><div class="line">			current=entry[first_unsorted];//未排序之处的元素暂存 </div><div class="line">			do&#123;</div><div class="line">				entry[position]=entry[position-1]; </div><div class="line">				position--;</div><div class="line">			&#125;while(position&gt;0&amp;&amp;entry[position-1]&gt;current); </div><div class="line">			entry[position]=current;//插入暂存的元素 </div><div class="line">		&#125;	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="二分插入排序算法"><a href="#二分插入排序算法" class="headerlink" title="二分插入排序算法"></a>二分插入排序算法</h4><p><strong>算法思想：</strong></p>
-<ul>
-<li><p><strong>把n个待排序的元素看成为一个有序表和一个无序表。开始时有序表中只包含1个元素，无序表中包含有n-1个元素，排序过程中每次从无序表中取出第一个元素，将它插入到有序表中的适当位置，使之成为新的有序表，重复n-1次可完成排序过程。插入位置的寻找过程是通过二分查找实现的。</strong></p>
-</li>
-<li><p><strong>时间复杂度：二分插入排序是稳定的与二分查找的复杂度相同；最好的情况是当插入的位置刚好是二分位置 所用时间为O(log₂n);最坏的情况是当插入的位置不在二分位置 所需比较次数为O(n)，无限逼近线性查找的复杂度。平均时间复杂度为O(n^2)</strong></p>
-</li>
-<li><p><strong>算法的稳定性：二分插入排序算法是一种稳定的排序算法。</strong></p>
-</li>
-</ul>
-<p><strong>算法的C++实现</strong>   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">void dichotomize_insertion_sort(int entry[],int count)&#123;</div><div class="line">	int current;</div><div class="line">	for(int i=1;i&lt;count;i++)&#123;</div><div class="line">		if(entry[i]&lt;entry[i-1])&#123;</div><div class="line">			int l=0,r=i-1;</div><div class="line">			while(1&lt;=r)&#123;</div><div class="line">				int mid=(1+r)/2;</div><div class="line">				if(entry[i]&lt;entry[mid])</div><div class="line">					r=mid-1;</div><div class="line">				else</div><div class="line">					l=mid+1;</div><div class="line">			&#125;</div><div class="line">			current=entry[i];</div><div class="line">			for(int j=i-1;j&gt;=l;j--)</div><div class="line">				entry[j+1]=entry[j];</div><div class="line">			entry[l]=current;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="希尔插入排序算法"><a href="#希尔插入排序算法" class="headerlink" title="希尔插入排序算法"></a>希尔插入排序算法</h4><p><strong>算法思想：</strong></p>
-<ul>
-<li><p><strong>先将整个待排元素序列分割成若干个子序列（由相隔某个“增量”的元素组成的）分别进行直接插入排序，然后依次缩减增量再进行排序，待整个序列中的元素基本有序（增量足够小）时，再对全体元素进行一次直接插入排序。因为直接插入排序在元素基本有序的情况下（接近最好情况），效率是很高的，因此希尔排序在时间效率上比前两种方法有较大提高。</strong></p>
-</li>
-<li><p><strong>时间复杂度：希尔排序最好时间复杂度和平均时间复杂度都是O(NLogN)，最坏时间复杂度为O(N2)。</strong></p>
-</li>
-<li><p><strong>算法的稳定性：由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。</strong></p>
-</li>
-</ul>
-<p><strong>算法的C++实现</strong>   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">void sort_interval(int entry[],int count,int start, int increment)</div><div class="line">&#123; </div><div class="line">	int current;</div><div class="line">	int j;</div><div class="line">	for(int i=start+ increment; i&lt;count; i+= increment )&#123; </div><div class="line">		if (entry[i]&lt;entry[i- increment])&#123;  </div><div class="line">			current=entry[i];</div><div class="line">			j=i- increment;</div><div class="line">		&#125;</div><div class="line">		while((current &lt;entry[j])&amp;&amp;j&gt;=start)&#123;  </div><div class="line">			entry[j+ increment]=entry[j];</div><div class="line">			j-= increment;</div><div class="line">		&#125;</div><div class="line">		entry[j+ increment]=current;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">void shell_insertion_sort(int entry[],int count)&#123;</div><div class="line">	int increment=count/2;</div><div class="line">	while (increment&gt;=1)&#123;  </div><div class="line">		for(int start=0; start&lt;increment; start++)</div><div class="line">			sort_interval(entry,count,start, increment);</div><div class="line">		increment/= 2;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="表插入排序算法"><a href="#表插入排序算法" class="headerlink" title="表插入排序算法"></a>表插入排序算法</h4><p><strong>算法思想：</strong></p>
-<ul>
-<li><strong>不移动表中的任何记录，使用指针表示排序结果。</strong></li>
-</ul>
-<p><strong>算法的C++实现</strong>   算法的c++实现，实现代码来自<a href="http://blog.csdn.net/zhangxiangdavaid/article/details/28127311" target="_blank" rel="external">苏叔叔csdn的博客</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">const int MAX = 1000;    //这里的最大值，应设置好   </div><div class="line">typedef struct rec   //Record 静态链表的节点类型   </div><div class="line">&#123;  </div><div class="line">    int data;  </div><div class="line">    int next;   //静态链表的链域可以这样写，大家应该见过很多次   </div><div class="line">&#125;Rec;  </div><div class="line">void InsertSort(int a[], int n)   //表插入   </div><div class="line">&#123;  </div><div class="line">    Rec *rec = new Rec[n+1];  </div><div class="line">    for (int i = 0; i &lt; n; i++)  //把数据赋给链表   </div><div class="line">    &#123;  </div><div class="line">        rec[i + 1].data = a[i];  </div><div class="line">        rec[i + 1].next = 0;  </div><div class="line">    &#125;  </div><div class="line">    rec[0].data = MAX;  </div><div class="line">    rec[0].next = 1;    //头节点和第一个节点构成了循环链表   </div><div class="line">    int p, q;  </div><div class="line">    for (int i = 2; i &lt; n + 1; i++) //修改next域，使其按指针指向有序  </div><div class="line">    &#123;  </div><div class="line">        q = 0;  </div><div class="line">        p = rec[q].next;    //p指向当前待比较的节点，q指向前一个  </div><div class="line">        while (rec[i].data &gt;= rec[p].data)     // &gt;= 保证了排序的稳定性   </div><div class="line">        &#123;  </div><div class="line">            q = p;  </div><div class="line">            p = rec[q].next;  </div><div class="line">        &#125;  </div><div class="line">        rec[i].next = p;  </div><div class="line">        rec[q].next = i;  </div><div class="line">    &#125;  </div><div class="line">    p = rec[0].next;  </div><div class="line">    int i=0;  </div><div class="line">    while(p!=0)  //顺着静态链表的指针指向，回写数据到原数组   </div><div class="line">    &#123;  </div><div class="line">        a[i++]=rec[p].data;  </div><div class="line">        p=rec[p].next;  </div><div class="line">    &#125;  </div><div class="line">    delete[]rec;   //释放空间   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2018/01/22/数据结构-排序算法之插入排序（直接插入，二分插入，希尔，表插入）/#more">more >></a>
+        
       
 
       
@@ -308,28 +257,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数据结构-两种常见的查找算法"><a href="#数据结构-两种常见的查找算法" class="headerlink" title="数据结构-两种常见的查找算法"></a>数据结构-两种常见的查找算法</h1><p>查找是在大量的信息中寻找一个特定的信息元素，在计算机应用中，查找是常用的基本运算</p>
-<hr>
-<h4 id="顺序查找算法"><a href="#顺序查找算法" class="headerlink" title="顺序查找算法"></a>顺序查找算法</h4><p><strong>算法思想：</strong></p>
-<ul>
-<li><strong>顺序查找也称为线形查找，就是从表的一端开始逐个扫描表中各元素，直到找到目标，或者到达表的令一端即查找失败。</strong></li>
-<li><strong>时间复杂度为：O(n)</strong></li>
-</ul>
-<p><strong>算法实现</strong>   算法的c++实现，实现代码来自<a href="http://jw1.nwnu.edu.cn/jpkc/2006/sjjg/" target="_blank" rel="external">王治和教授</a>数据结构课堂的总结</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">enum error_code&#123;</div><div class="line">	success,not_present</div><div class="line">&#125;; </div><div class="line"></div><div class="line">error_code sequentialSearch(int entry[],int size,int target,int &amp;position)&#123;</div><div class="line">	position=size;</div><div class="line">	entry[0]=target;</div><div class="line">	while(entry[position]!=target)</div><div class="line">		position--;</div><div class="line">	if(position!=0)</div><div class="line">		return success;</div><div class="line">	else</div><div class="line">		return not_present;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="二分查找算法"><a href="#二分查找算法" class="headerlink" title="二分查找算法"></a>二分查找算法</h4><p><strong>限制条件</strong></p>
-<ul>
-<li><strong>要查找的表是有序的，也就是说表中元素已经按照关键码的顺序存储</strong></li>
-<li><strong>表采用顺序存储方式</strong></li>
-</ul>
-<p><strong>算法思想</strong></p>
-<ul>
-<li><strong>对于一个有序表来说，二分查找就是把查找目标与表中间的元素进行比较，如果相等则找到，如果查找目标小于中间元素，则在前一半查找，否则就在后一半查找</strong></li>
-<li><strong>算法时间复杂度为O(logn)</strong></li>
-</ul>
-<p><strong>算法实现</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">int binarySearch(int a[],int len, int x)</div><div class="line">&#123;</div><div class="line">    int mid;          // 中间下标</div><div class="line">    int low=0;        // 区间的左端下标</div><div class="line">    int high=len-1;   // 区间的右端下标</div><div class="line">    </div><div class="line">    while(low &lt;= high)</div><div class="line">    &#123;</div><div class="line">        mid = low + (high-low)/2;  // 计算中间下标， 若使用(low+high)/2可能会有整数溢出：当low和high的值较大时(接近整型数所能表示的范围),low+high的值就会溢出</div><div class="line">        if(x==a[mid])</div><div class="line">            return mid;    // 若找到返回元素的下标 </div><div class="line">        else if(x&gt;a[mid])</div><div class="line">            low=mid+1;     // 在右半边区间搜索 </div><div class="line">        else</div><div class="line">            high=mid-1;    // 在左半边区间搜索 </div><div class="line">    &#125;</div><div class="line">    return -1;   // 没有找到 </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2018/01/21/数据结构-两种常见的查找算法/#more">more >></a>
+        
       
 
       
@@ -403,9 +333,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数据结构-重要的回溯算法"><a href="#数据结构-重要的回溯算法" class="headerlink" title="数据结构-重要的回溯算法"></a>数据结构-重要的回溯算法</h1><p>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径</p>
-<p>回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标</p>
-<p><strong>回溯基本思想</strong>：通过构造部分解来寻求一个问题的完全解。而且部分解仍然满足问题的约束条件。算法最后将部分解扩展为完全解，当有不符合约束条件的情况发生时，算法通过丢弃最近构造的部分解返回到构造该部分解之前<strong>（回溯）</strong>，然后尝试其他的可能解</p>
-
+        
+          <a class="article-more-a" href="/2018/01/18/数据结构-重要的回溯算法/#more">more >></a>
+        
       
 
       
@@ -479,26 +409,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数据结构-递归和分治"><a href="#数据结构-递归和分治" class="headerlink" title="数据结构-递归和分治"></a>数据结构-递归和分治</h1><p><strong>递归算法</strong>：在计算机科学中是指一种通过重复将问题分解为同类的子问题而解决问题的方法，函数自己调用自己，或者是函数调用了一系列其他函数，而其中的一个函数最终又再次调用了第一个函数。</p>
-<p><strong>分治思想</strong>：将一个规模为N的问题，可以分解为k个规模较小的子问题，这些问题相互独立且与原问题相同，可以递归的求解这些问题，然后将各个自问题的解合并得到原问题的解。</p>
-<p><strong>递归应用</strong>-求解n个阶乘问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int factorial(int n)&#123;</div><div class="line">	if(n==0)</div><div class="line">		return 1;</div><div class="line">	else</div><div class="line">		return n*factorial(n-1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>递归应用</strong>-求解汉诺塔问题</p>
-<p><strong>算法思想：</strong></p>
-<ul>
-<li>将圆柱A上最上面的n-1个盘子移动到辅助柱B</li>
-<li>移动圆柱A上第n个盘子到目标柱C上</li>
-<li>将辅助柱B上的n-1个盘子移动到目标柱C</li>
-</ul>
-<hr>
-<p>本例中求解汉诺塔问题，实现思路及代码来自<a href="http://jw1.nwnu.edu.cn/jpkc/2006/sjjg/" target="_blank" rel="external">王治和教授</a>数据结构课堂的总结</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">void move(int count,int start,int finish,int temp)&#123;</div><div class="line">	if(count==1)&#123;</div><div class="line">		cout&lt;&lt;&quot;move disk &quot;&lt;&lt;count&lt;&lt;&quot; from &quot;&lt;&lt;start&lt;&lt;&quot; to &quot;&lt;&lt;finish&lt;&lt;endl;		</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		move(count-1,start,temp,finish);</div><div class="line">		cout&lt;&lt;&quot;move disk &quot;&lt;&lt;count&lt;&lt;&quot; from &quot;&lt;&lt;start&lt;&lt;&quot; to &quot;&lt;&lt;finish&lt;&lt;endl;</div><div class="line">		move(count-1,temp,finish,start);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>递归能够解决的问题大致如下三类：</p>
-<ul>
-<li>数据的定义是按递归定义的。如Fibonacci函数</li>
-<li>问题解法按递归算法实现。如Hanoi问题</li>
-<li>数据的结构形式是按递归定义的。如二叉树、广义表等</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2018/01/18/数据结构-重要的递归算法/#more">more >></a>
+        
       
 
       
@@ -577,78 +490,9 @@ var _hmt = _hmt || [];
 <li>数据代替expert</li>
 </ul>
 <p>业务系统的发展历史</p>
-<ul>
-<li>基于专家经验</li>
-<li>基于统计-分维度统计</li>
-<li>机器学习-在线学习</li>
-</ul>
-<p>机器学习模式</p>
-<ul>
-<li>离线机器学习-通过定时任务来训练算法，具有缺点，不具有实时性。</li>
-<li>在线学习-实时学习</li>
-</ul>
-<p>机器学习的典型应用</p>
-<ul>
-<li>关联规则-啤酒和纸尿裤-购物篮分析-捆绑销售-货物摆放位置的挑战-数据挖掘</li>
-<li>聚类-用户细分精准营销</li>
-<li>朴素贝叶斯-垃圾邮件识别</li>
-<li>决策树-信用卡欺诈-银行用来风险识别</li>
-<li>ctr预估-互联网广告</li>
-<li>协同过滤-电商推荐系统</li>
-<li>自然语言处理-情感分析，实体识别</li>
-<li>深度学习-图像识别（模式识别）</li>
-</ul>
-<p>机器学习和数据分析的区别</p>
-<ul>
-<li>数据分析-交易信息-少量数据</li>
-<li>机器学习-行为数据-海量数据-》大数据</li>
-<li>数据分析使用采样分析，行为数据使用全量分析-云计算</li>
-<li>解决业务问题不同</li>
-<li>分析方法不同，数据分析通过用户驱动，交互式分析，数据挖掘通过数据驱动，自动</li>
-</ul>
-<p>进行知识发现机器学习算法分类</p>
-<ul>
-<li>有监督学习-分类算法，回归算法</li>
-<li>无监督学习-聚类</li>
-<li>半监督学习（强化学习）</li>
-<li>分类与回归</li>
-<li>聚类</li>
-<li>标注-文本词性的标注</li>
-</ul>
-<p>算法本质分类</p>
-<ul>
-<li>生成模型</li>
-<li>判别模型</li>
-</ul>
-<p>机器学习算法排名<br>| 排名 | 算法类别 | 算法名称 | 说明 |<br>| - | :——————-: | :—————–: | :——————————- |<br>| 1 | 分类 | C4.5 |<br>| 2 | 聚类 | K-Means |<br>| 3 | 统计学习 | SVM |<br>| 4 | 关联分析 | Apriori | （多次访问数据，淘汰）FP-Growth后来居上 |<br>| 5 | 统计分析 | EM | （算法框架） |<br>| 6 | 链接挖掘 | PageRank | （谷歌）|<br>| 7 | 集装与推进 | AdaBoost | （人脸识别）-决策树 |<br>| 8 | 分类 | kNN |<br>| 9 | 分类 | Naive Bayes | （朴素贝叶斯） |<br>| 10 | 分类 | CART |</p>
-<p>机器学习常见算法</p>
-<ul>
-<li>FP-Growth </li>
-<li>逻辑回归</li>
-<li>RF,GBDT</li>
-<li>推荐算法</li>
-<li>LDA（自然语言处理）</li>
-<li>Word2Vector（文本挖掘）</li>
-<li>HMM,CRF（文本挖掘）</li>
-<li>深度学习</li>
-</ul>
-<p>机器学习解决问题的框架</p>
-<ul>
-<li>确定目标-业务需求-数据-特征工程（数据预处理）</li>
-<li>数据决定机器学习的效果</li>
-<li>训练模型<ul>
-<li>定义模型</li>
-<li>定义损失函数</li>
-<li>优化算法</li>
-</ul>
-</li>
-<li>模型评估<ul>
-<li>交叉验证</li>
-<li>效果评估</li>
-</ul>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2018/01/17/机器学习发展历史及常见算法/#more">more >></a>
+        
       
 
       
@@ -823,6 +667,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
@@ -835,15 +683,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,11 +695,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -867,15 +715,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
