@@ -173,6 +173,325 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java获取当前请求的url地址及各参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/java获取当前请求的url地址及各参数/">java获取当前请求的url地址及各参数</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/java获取当前请求的url地址及各参数/" class="archive-article-date">
+  	<time datetime="2017-10-07T11:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一获取全路径"><a href="#一获取全路径" class="headerlink" title="一获取全路径"></a>一获取全路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.getRequestURL(); //得到http://localhost:8080/ResSeat/GenerateCode.do</div></pre></td></tr></table></figure>
+<h3 id="二获取协议名和域名"><a href="#二获取协议名和域名" class="headerlink" title="二获取协议名和域名"></a>二获取协议名和域名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">request.getScheme();  //得到协议名 例如：http</div><div class="line">request.getServerName();  //得到域名 localhost</div></pre></td></tr></table></figure>
+<h3 id="三获取参数"><a href="#三获取参数" class="headerlink" title="三获取参数"></a>三获取参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.getQueryString();  //得到参数  id=6</div></pre></td></tr></table></figure>
+<h3 id="四获取项目名"><a href="#四获取项目名" class="headerlink" title="四获取项目名"></a>四获取项目名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.getContextPath();  //如果在tomcat的server中配置了项目的虚拟路径则会得到项目名，没有配置则为空。</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/java获取当前请求的url地址及各参数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Opencv-使用Rect选取与设置窗口ROI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/">Opencv 使用Rect选取与设置窗口ROI</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/" class="archive-article-date">
+  	<time datetime="2017-09-17T08:25:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="首先看一下Rect对象的定义："><a href="#首先看一下Rect对象的定义：" class="headerlink" title="首先看一下Rect对象的定义："></a><strong>首先看一下<em>Rect</em>对象的定义：</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef Rect_&lt;int&gt; Rect;</div></pre></td></tr></table></figure>
+<h4 id="再看Rect-的定义："><a href="#再看Rect-的定义：" class="headerlink" title="再看Rect_的定义："></a><strong>再看<em>Rect_</em>的定义：</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">/*!</div><div class="line">  The 2D up-right rectangle class</div><div class="line"></div><div class="line">  The class represents a 2D rectangle with coordinates of the specified data type.</div><div class="line">  Normally, cv::Rect ~ cv::Rect_&lt;int&gt; is used.</div><div class="line">*/</div><div class="line">template&lt;typename _Tp&gt; class Rect_</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    typedef _Tp value_type;</div><div class="line"></div><div class="line">    //! various constructors</div><div class="line">    Rect_();</div><div class="line">    Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height);</div><div class="line">    Rect_(const Rect_&amp; r);</div><div class="line">    Rect_(const CvRect&amp; r);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; org, const Size_&lt;_Tp&gt;&amp; sz);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; pt1, const Point_&lt;_Tp&gt;&amp; pt2);</div><div class="line"></div><div class="line">    Rect_&amp; operator = ( const Rect_&amp; r );</div><div class="line">    //! the top-left corner</div><div class="line">    Point_&lt;_Tp&gt; tl() const;</div><div class="line">    //! the bottom-right corner</div><div class="line">    Point_&lt;_Tp&gt; br() const;</div><div class="line"></div><div class="line">    //! size (width, height) of the rectangle</div><div class="line">    Size_&lt;_Tp&gt; size() const;</div><div class="line">    //! area (width*height) of the rectangle</div><div class="line">    _Tp area() const;</div><div class="line"></div><div class="line">    //! conversion to another data type</div><div class="line">    template&lt;typename _Tp2&gt; operator Rect_&lt;_Tp2&gt;() const;</div><div class="line">    //! conversion to the old-style CvRect</div><div class="line">    operator CvRect() const;</div><div class="line"></div><div class="line">    //! checks whether the rectangle contains the point</div><div class="line">    bool contains(const Point_&lt;_Tp&gt;&amp; pt) const;</div><div class="line"></div><div class="line">    _Tp x, y, width, height; //&lt; the top-left corner, as well as width and height of the rectangle</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="从上面的定义至少可以发现两点："><a href="#从上面的定义至少可以发现两点：" class="headerlink" title="从上面的定义至少可以发现两点："></a><strong>从上面的定义至少可以发现两点：</strong></h4><ul>
+<li>类Rect_的类模板中的数据类型<em>Tp在Rect</em><int>中被指定为整型</int></li>
+<li>从Rect_的构造函数可以看出，其形参列表一共有6种形式</li>
+</ul>
+<ol>
+<li>Rect_()，形参列表为空，即定义一个空窗口（默认值为：x=y=width=height=0）</li>
+<li>Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height)，定义一个左上角点坐标为(_x, _y)的_width*_height矩形窗口</li>
+<li>Rect<em>(const Rect</em>&amp; r)，使用其他的Rect_对象初始化</li>
+<li>Rect_(const CvRect&amp; r)，使用CvRect对象初始化</li>
+<li>Rect<em>(const Point</em><_tp>&amp; org, const Size_<_tp>&amp; sz)，分别将位置坐标(_x, _y)和窗口大小(_width, <em>height)用Point</em>和Size_对象初始化</_tp></_tp></li>
+<li>Rect<em>(const Point</em><_tp>&amp; pt1, const Point_<_tp>&amp; pt2)，分别将坐标位置(_x, _y)和窗口大小(_width, <em>height)用Point</em>和Point_对象初始化</_tp></_tp></li>
+<li>在OpenCV库中，图像像素坐标与所在行列数的对应关系为：x -&gt; col, y -&gt; row, width -&gt; cols, height -&gt; rows<h4 id="下面给出一段代码，基本可以把Rect的常见用法涵盖"><a href="#下面给出一段代码，基本可以把Rect的常见用法涵盖" class="headerlink" title="下面给出一段代码，基本可以把Rect的常见用法涵盖"></a><strong>下面给出一段代码，基本可以把<em>Rect</em>的常见用法涵盖</strong></h4></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Mat image = imread(&quot;C:\\Users\\Leo\\Desktop\\lena.jpg&quot;);</div><div class="line">Rect rect1(256, 256, 128, 128);</div><div class="line">Rect rect2(224, 224, 128, 128);</div><div class="line"></div><div class="line">Mat roi1;</div><div class="line">image(rect1).copyTo(roi1); // copy the region rect1 from the image to roi1</div><div class="line">imshow(&quot;1&quot;, roi1);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">Mat roi2;</div><div class="line">image(rect2).copyTo(roi2); // copy the region rect2 from the image to roi2</div><div class="line">imshow(&quot;2&quot;, roi2);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">cv::Rect rect3 = rect1&amp;rect2; // intersection of the two sets</div><div class="line">Mat roi3;</div><div class="line">image(rect3).copyTo(roi3);</div><div class="line">imshow(&quot;3&quot;, roi3);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">Rect rect4 = rect1|rect2; // union of the two sets (the minimum bounding rectangle)</div><div class="line">Mat roi4;</div><div class="line">image(rect4).copyTo(roi4);</div><div class="line">imshow(&quot;4&quot;, roi4);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">Rect rect5(10, 10, 128, 128);</div><div class="line">roi1.copyTo(image(rect5)); // copy the region rect1 to the designated region in the image</div><div class="line">imshow(&quot;5&quot;, image);</div><div class="line">waitKey(0);</div></pre></td></tr></table></figure>
+<h4 id="结果为"><a href="#结果为" class="headerlink" title="结果为"></a><strong>结果为</strong></h4><p><img src="http://img.blog.csdn.net/20170917162355284?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="注：本文转自yhl-leo的CSDN博客"><a href="#注：本文转自yhl-leo的CSDN博客" class="headerlink" title="注：本文转自yhl_leo的CSDN博客"></a><strong>注：本文转自<a href="http://blog.csdn.net/yhl_leo/article/details/50593825" title="打开目标位置" target="_blank" rel="external">yhl_leo</a>的CSDN博客</strong></h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Opencv</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Maven管理的项目中添加本地jar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/Maven管理的项目中添加本地jar/">Maven管理的项目中添加本地jar</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/13/Maven管理的项目中添加本地jar/" class="archive-article-date">
+  	<time datetime="2017-09-13T13:37:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="今天弄一个二维码生成的功能，工程是用maven管理的，需要往工程里添加一个由自己打包的jar包，自己搞了半天添加未果，网上查找未果，刚好身边的同学冯可能遇到过这个问题，遂分分钟内予己解决。本着老师秦和同学冯分享并快乐的精神，我也快乐快乐，现记录在此，方便他人解决问题。"><a href="#今天弄一个二维码生成的功能，工程是用maven管理的，需要往工程里添加一个由自己打包的jar包，自己搞了半天添加未果，网上查找未果，刚好身边的同学冯可能遇到过这个问题，遂分分钟内予己解决。本着老师秦和同学冯分享并快乐的精神，我也快乐快乐，现记录在此，方便他人解决问题。" class="headerlink" title="今天弄一个二维码生成的功能，工程是用maven管理的，需要往工程里添加一个由自己打包的jar包，自己搞了半天添加未果，网上查找未果，刚好身边的同学冯可能遇到过这个问题，遂分分钟内予己解决。本着老师秦和同学冯分享并快乐的精神，我也快乐快乐，现记录在此，方便他人解决问题。"></a>今天弄一个二维码生成的功能，工程是用maven管理的，需要往工程里添加一个由自己打包的jar包，自己搞了半天添加未果，网上查找未果，刚好身边的同学冯可能遇到过这个问题，遂分分钟内予己解决。本着老师秦和同学冯分享并快乐的精神，我也快乐快乐，现记录在此，方便他人解决问题。</h4><h4 id="1-在你的工程合适的位置新建一个lib文件夹，专门用来存放自定义jar包，并将你需要添加到工程里的jar放在该目录下，该目录用来存放本地的jar，或者是maven仓库中找不到的jar，这是小生的存放路径。"><a href="#1-在你的工程合适的位置新建一个lib文件夹，专门用来存放自定义jar包，并将你需要添加到工程里的jar放在该目录下，该目录用来存放本地的jar，或者是maven仓库中找不到的jar，这是小生的存放路径。" class="headerlink" title="1.  在你的工程合适的位置新建一个lib文件夹，专门用来存放自定义jar包，并将你需要添加到工程里的jar放在该目录下，该目录用来存放本地的jar，或者是maven仓库中找不到的jar，这是小生的存放路径。"></a>1.  在你的工程合适的位置新建一个lib文件夹，专门用来存放自定义jar包，并将你需要添加到工程里的jar放在该目录下，该目录用来存放本地的jar，或者是maven仓库中找不到的jar，这是小生的存放路径。</h4><p><img src="http://img.blog.csdn.net/20170913215305494?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="2-右击项目，选择properties-弹出项目框中选择Java-Build-Path-，选择Librarys，并选择add-jars-找到你刚才放在lib下的jar就添加成功了。"><a href="#2-右击项目，选择properties-弹出项目框中选择Java-Build-Path-，选择Librarys，并选择add-jars-找到你刚才放在lib下的jar就添加成功了。" class="headerlink" title="2.  右击项目，选择properties,弹出项目框中选择Java Build Path ，选择Librarys，并选择add jars,找到你刚才放在lib下的jar就添加成功了。"></a>2.  右击项目，选择properties,弹出项目框中选择Java Build Path ，选择Librarys，并选择add jars,找到你刚才放在lib下的jar就添加成功了。</h4><p><img src="http://img.blog.csdn.net/20170913213405683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/13/Maven管理的项目中添加本地jar/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web前后端数据交互技术" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/web前后端数据交互技术/">web前后端数据交互技术</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/13/web前后端数据交互技术/" class="archive-article-date">
+  	<time datetime="2017-09-13T09:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一阶段：Form"><a href="#第一阶段：Form" class="headerlink" title="第一阶段：Form"></a>第一阶段：Form</h2><p>web应用想要与服务器交互，必须提交一个表单（form）。服务器接收并处理该表单，然后返回一个全新的页面。<br>缺点：前后两个页面需要更新的数据可能很少，这个过程可能传输了很多之前那个页面已经有的数据，浪费了带宽；为了返回整个页面，服务器可能需要为页面的其他内容构造数据，浪费服务器资源。</p>
+<h2 id="第二阶段：Ajax（Asynchronous-JavaScript-and-XML）"><a href="#第二阶段：Ajax（Asynchronous-JavaScript-and-XML）" class="headerlink" title="第二阶段：Ajax（Asynchronous JavaScript and XML）"></a>第二阶段：Ajax（Asynchronous JavaScript and XML）</h2><p>由JS脚本发送http请求，服务器只返回页面需要更新的那部分数据，JS根据返回的数据刷新页面的局部内容，而不是刷新整个页面。<br>优点：网络传输小、服务器负担小<br>缺点：没有解决对实时性的友好支持（比如聊天室或客服系统），如果需要持续地从服务器获取数据，需要不断请求</p>
+<h2 id="第三阶段：Comet"><a href="#第三阶段：Comet" class="headerlink" title="第三阶段：Comet"></a>第三阶段：Comet</h2><p>一种hack技术，基于http长连接的“服务器推”的技术。实现方式有很多种，比如基于Ajax的长轮询（long-polling）、封装好的Comet4J等。<br>比较简单的是基于Ajax的长轮询：web应用发出Ajax请求，服务器收到请求后，如果有数据就即刻返回，如果没数据，会等待一段时间（比如定时20秒），在等待的时间内，如果有数据就返回，如果一直没数据，则timeout的时候返回。web应用收到服务器的返回后，处理数据、更新页面，再继续请求。服务器在发送完数据到接收到一个新请求之前，如果有数据需要发送，则先缓存起来，等待接到下一次请求后再发送。<br>优点：基本解决了实时性的问题<br>缺点：服务器需要阻塞线程等待数据，如果连接请求多的话，得考虑使用复杂的技术释放线程给其他请求使用，不然可能会拖死服务器。需要客户端和服务器端协调好才能正常工作。</p>
+<h2 id="第四阶段：Websocket"><a href="#第四阶段：Websocket" class="headerlink" title="第四阶段：Websocket"></a>第四阶段：Websocket</h2><p>html5标准中的一种全双工通信规范，基于TCP协议，与http协议兼容，但不是http协议的一部分。<br>web应用（客户端）先发起一个Handshake请求，服务器应答之后，就可以双向交换数据了。<br>通信的两方都可以发起关闭的请求（通过发送一个Closing Handshake），对方收到请求后，回复一个相同的数据包，就关闭通信通道了。<br>优点：数据传输量极少、实时性好。</p>
+<h4 id="PS-此外，双向通信还可以通过flash的socket和xmlsocket实现。但它不属于某一个web规范。"><a href="#PS-此外，双向通信还可以通过flash的socket和xmlsocket实现。但它不属于某一个web规范。" class="headerlink" title="PS. 此外，双向通信还可以通过flash的socket和xmlsocket实现。但它不属于某一个web规范。"></a>PS. 此外，双向通信还可以通过flash的socket和xmlsocket实现。但它不属于某一个web规范。</h4><h4 id="注：本文转自转自Clement-Xu的csdn博客"><a href="#注：本文转自转自Clement-Xu的csdn博客" class="headerlink" title="注：本文转自转自Clement-Xu的csdn博客"></a>注：本文转自转自<strong><a href="http://blog.csdn.net/clementad/article/details/50563569?ref=myread&quot;打开目标地址&quot;" target="_blank" rel="external">Clement-Xu</a></strong>的csdn博客</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/13/web前后端数据交互技术/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mysql命令行执行sql文件，解决sqlyog或navicat执行sql文件乱码的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -491,7 +810,7 @@ M.create(4,4,CV_8UC(2));
 <h4 id="其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据"><a href="#其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据" class="headerlink" title="其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据"></a>其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据</h4><h3 id="故在此我们需要拼接饼图中data的数据格式"><a href="#故在此我们需要拼接饼图中data的数据格式" class="headerlink" title="故在此我们需要拼接饼图中data的数据格式"></a>故在此我们需要拼接饼图中data的数据格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data: result.degree    //legend里的data数据</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">data: (function()&#123;</div><div class="line">       	var rs = [];</div><div class="line">       	for(var res in result.degree)&#123;</div><div class="line">       		rs.push(&#123;</div><div class="line">       			name :result.degree[res],</div><div class="line">       			value:result.count[res]</div><div class="line">       		&#125;);</div><div class="line">       	&#125;</div><div class="line">        return rs;</div><div class="line">     &#125;)()</div></pre></td></tr></table></figure>
 <h4 id="首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。"><a href="#首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。" class="headerlink" title="首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。"></a>首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。</h4><h3 id="这是异步请求数据和动态加载饼图的完成代码"><a href="#这是异步请求数据和动态加载饼图的完成代码" class="headerlink" title="这是异步请求数据和动态加载饼图的完成代码"></a>这是异步请求数据和动态加载饼图的完成代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type : &quot;get&quot;,</div><div class="line">    async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）</div><div class="line"></div><div class="line">    url : &quot;此处为请求的url地址&quot;,    //请求发送到</div><div class="line">    data : &#123;&#125;,</div><div class="line">    dataType : &quot;json&quot;,        //返回数据形式为json</div><div class="line">    </div><div class="line">     success : function(result) &#123; </div><div class="line">            myChart.setOption(&#123;        //填入数据</div><div class="line">               legend: &#123;</div><div class="line">                   data: result.degree</div><div class="line">               &#125;,</div><div class="line">               series: [&#123;</div><div class="line">                   data: (function()&#123;</div><div class="line">                   	var rs = [];</div><div class="line">                   	for(var res in result.degree)&#123;</div><div class="line">                   		rs.push(&#123;</div><div class="line">                   			name :result.degree[res],</div><div class="line">                   			value:result.count[res]</div><div class="line">                   		&#125;);</div><div class="line">                   	&#125;</div><div class="line">                   	return rs;</div><div class="line">                   &#125;)()</div><div class="line">               &#125;]</div><div class="line">           &#125;);</div><div class="line">           </div><div class="line">            myChart.hideLoading();    //隐藏加载动画</div><div class="line">    &#125;,</div><div class="line">    error : function(errorMsg) &#123;</div><div class="line">	    alert(&quot;图表请求数据失败!&quot;);</div><div class="line">	    myChart.hideLoading();</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>###最后饼图成功的绘制<br><img src="http://img.blog.csdn.net/20170907172919028?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="最后饼图成功的绘制"><a href="#最后饼图成功的绘制" class="headerlink" title="最后饼图成功的绘制"></a>最后饼图成功的绘制</h3><p><img src="http://img.blog.csdn.net/20170907172919028?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 
       
 
@@ -701,83 +1020,10 @@ M.create(4,4,CV_8UC(2));
 
 
   
-    <article id="post-学习DWZ框架小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/27/学习DWZ框架小结/">学习DWZ框架小结</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/27/学习DWZ框架小结/" class="archive-article-date">
-  	<time datetime="2016-08-27T14:25:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blogImg/DWZ.png" alt=""><br>今天开始学习DWZ框架，也是第一次写博客。虽谈不上心情沉重！但也是略显激动。。</p>
-<p>DWZ框架，其主要的特点是使用HTML扩展的方式来间接代替JAVASCRIPT代码。这一句话至关重要。。好好参透这句话，那么DWZ框架也就学完了。</p>
-<p>虽然整个框架用了大量的JACASCRIPT代码。也不去理会什么AJAX。但是，只需要了解其各个控件的html扩展方式，便可以转而调用JAVASCRIPT。使用DWZ框架过程中只要把握住其控件有哪些html扩展属性就可以了。</p>
-<p>而了解这些最好的途径莫过于阅读官方文档。里面说的很详细。而且对框架设计原理也有说明。所以DWZ框架真正学起来不难。关键在于耐心去学。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DWZ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/27/学习DWZ框架小结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -871,11 +1117,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -884,18 +1154,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
             
             <div class="clearfix"></div>
@@ -950,6 +1208,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <a href="http://blog.csdn.net/onesilver" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>一两银子的CSDN博客</a>
             </li>
           
+            <li class="search-li">
+              <a href="https://www.nwnu.edu.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>西北师范大学</a>
+            </li>
+          
         </ul>
   		
     	</section>
@@ -958,7 +1220,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">一两银子，one silver&lt;br&gt;education：武威一中&lt;br&gt;NORTHWEST NORMAL UNIVERSITY&lt;br&gt;LanZhou,China.&lt;br&gt;C.S in Computer Science</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">一两银子，one silver&lt;br&gt;education：武威一中，&lt;br&gt;NORTHWEST NORMAL UNIVERSITY&lt;br&gt;LanZhou,China.&lt;br&gt;C.S in Computer Science</div>
   	  	
     	</section>
     

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="一两银子的博客">
 <meta property="og:description" content="ECharts 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行，但是从后台异步获取数据后，需要在前台根据不同的图表拼接成相应图表data的数据格式，一般常用的图表有折现图，柱状图，饼图。这里说明饼图的使用方法。饼图的数据和配置项如下1234567891011121314151617181920212">
 <meta property="og:image" content="http://img.blog.csdn.net/20170907172919028?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-02-04T10:10:06.514Z">
+<meta property="og:updated_time" content="2018-02-04T10:17:10.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="echarts中饼图的异步数据加载绘制">
 <meta name="twitter:description" content="ECharts 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行，但是从后台异步获取数据后，需要在前台根据不同的图表拼接成相应图表data的数据格式，一般常用的图表有折现图，柱状图，饼图。这里说明饼图的使用方法。饼图的数据和配置项如下1234567891011121314151617181920212">
@@ -201,7 +201,7 @@ var _hmt = _hmt || [];
 <h4 id="其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据"><a href="#其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据" class="headerlink" title="其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据"></a>其中配置项中的data需要从后台异步获取数据后填充进去，而我们从后台获取到了关于value和name的json数据</h4><h3 id="故在此我们需要拼接饼图中data的数据格式"><a href="#故在此我们需要拼接饼图中data的数据格式" class="headerlink" title="故在此我们需要拼接饼图中data的数据格式"></a>故在此我们需要拼接饼图中data的数据格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data: result.degree    //legend里的data数据</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">data: (function()&#123;</div><div class="line">       	var rs = [];</div><div class="line">       	for(var res in result.degree)&#123;</div><div class="line">       		rs.push(&#123;</div><div class="line">       			name :result.degree[res],</div><div class="line">       			value:result.count[res]</div><div class="line">       		&#125;);</div><div class="line">       	&#125;</div><div class="line">        return rs;</div><div class="line">     &#125;)()</div></pre></td></tr></table></figure>
 <h4 id="首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。"><a href="#首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。" class="headerlink" title="首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。"></a>首次在页面加载时先加载图表的配置项，然后通过ajax请求异步请求数据，得到数据后再利用拼接完成的数据格式动态绘制饼图。</h4><h3 id="这是异步请求数据和动态加载饼图的完成代码"><a href="#这是异步请求数据和动态加载饼图的完成代码" class="headerlink" title="这是异步请求数据和动态加载饼图的完成代码"></a>这是异步请求数据和动态加载饼图的完成代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type : &quot;get&quot;,</div><div class="line">    async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）</div><div class="line"></div><div class="line">    url : &quot;此处为请求的url地址&quot;,    //请求发送到</div><div class="line">    data : &#123;&#125;,</div><div class="line">    dataType : &quot;json&quot;,        //返回数据形式为json</div><div class="line">    </div><div class="line">     success : function(result) &#123; </div><div class="line">            myChart.setOption(&#123;        //填入数据</div><div class="line">               legend: &#123;</div><div class="line">                   data: result.degree</div><div class="line">               &#125;,</div><div class="line">               series: [&#123;</div><div class="line">                   data: (function()&#123;</div><div class="line">                   	var rs = [];</div><div class="line">                   	for(var res in result.degree)&#123;</div><div class="line">                   		rs.push(&#123;</div><div class="line">                   			name :result.degree[res],</div><div class="line">                   			value:result.count[res]</div><div class="line">                   		&#125;);</div><div class="line">                   	&#125;</div><div class="line">                   	return rs;</div><div class="line">                   &#125;)()</div><div class="line">               &#125;]</div><div class="line">           &#125;);</div><div class="line">           </div><div class="line">            myChart.hideLoading();    //隐藏加载动画</div><div class="line">    &#125;,</div><div class="line">    error : function(errorMsg) &#123;</div><div class="line">	    alert(&quot;图表请求数据失败!&quot;);</div><div class="line">	    myChart.hideLoading();</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>###最后饼图成功的绘制<br><img src="http://img.blog.csdn.net/20170907172919028?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="最后饼图成功的绘制"><a href="#最后饼图成功的绘制" class="headerlink" title="最后饼图成功的绘制"></a>最后饼图成功的绘制</h3><p><img src="http://img.blog.csdn.net/20170907172919028?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 
       
 
@@ -422,11 +422,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -435,18 +459,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
             
             <div class="clearfix"></div>
@@ -501,6 +513,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <a href="http://blog.csdn.net/onesilver" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>一两银子的CSDN博客</a>
             </li>
           
+            <li class="search-li">
+              <a href="https://www.nwnu.edu.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>西北师范大学</a>
+            </li>
+          
         </ul>
   		
     	</section>
@@ -509,7 +525,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">一两银子，one silver&lt;br&gt;education：武威一中&lt;br&gt;NORTHWEST NORMAL UNIVERSITY&lt;br&gt;LanZhou,China.&lt;br&gt;C.S in Computer Science</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">一两银子，one silver&lt;br&gt;education：武威一中，&lt;br&gt;NORTHWEST NORMAL UNIVERSITY&lt;br&gt;LanZhou,China.&lt;br&gt;C.S in Computer Science</div>
   	  	
     	</section>
     
