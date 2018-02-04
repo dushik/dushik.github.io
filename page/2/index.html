@@ -173,30 +173,40 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-学习DWZ框架小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-数据结构-队列的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/27/学习DWZ框架小结/">学习DWZ框架小结</a>
+      <a class="article-title" href="/2018/01/17/数据结构-队列的实现/">数据结构-队列的实现</a>
     </h1>
   
 
         
-        <a href="/2016/08/27/学习DWZ框架小结/" class="archive-article-date">
-  	<time datetime="2016-08-27T14:25:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-27</time>
+        <a href="/2018/01/17/数据结构-队列的实现/" class="archive-article-date">
+  	<time datetime="2018-01-17T12:43:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blogImg/DWZ.png" alt=""><br>今天开始学习DWZ框架，也是第一次写博客。虽谈不上心情沉重！但也是略显激动。。</p>
-<p>DWZ框架，其主要的特点是使用HTML扩展的方式来间接代替JAVASCRIPT代码。这一句话至关重要。。好好参透这句话，那么DWZ框架也就学完了。</p>
-<p>虽然整个框架用了大量的JACASCRIPT代码。也不去理会什么AJAX。但是，只需要了解其各个控件的html扩展方式，便可以转而调用JAVASCRIPT。使用DWZ框架过程中只要把握住其控件有哪些html扩展属性就可以了。</p>
-<p>而了解这些最好的途径莫过于阅读官方文档。里面说的很详细。而且对框架设计原理也有说明。所以DWZ框架真正学起来不难。关键在于耐心去学。</p>
+        <h1 id="数据结构-队列"><a href="#数据结构-队列" class="headerlink" title="数据结构-队列"></a>数据结构-队列</h1><p>队列是一种受限的线性表，其限制性在于它的插入操作在表的一端（也称队尾），删除操作在表的另一端（也称为队首），其主要操作如下：</p>
+<ul>
+<li><strong>append（insert） 入队</strong></li>
+<li><strong>serve（delete）出队</strong></li>
+<li><strong>retrieve 读队首</strong></li>
+<li><strong>empty 判队为空</strong></li>
+<li><strong>front永远指向队首元素，队首是允许删除的一端</strong></li>
+<li><strong>rear永远指向队尾元素，队尾是允许插入的一端</strong></li>
+</ul>
+<p>利用数组实现顺序队列将面临“假溢出”的情况，到数组最后无法再插入元素，而数组前面可能造成空间浪费没有利用的情况，故队列的实现一般通过循环队列来 实现，即把存储队列数组看成一个环而不是一条直线。当rear指向数组边界马上溢出时，将指针修改为rear=0</p>
+<hr>
+<p>本例中的循环队列通过C++模板类实现，实现思路及代码来自<a href="http://jw1.nwnu.edu.cn/jpkc/2006/sjjg/" target="_blank" rel="external">王治和教授</a>数据结构课堂的总结</p>
+<h3 id="循环队列的c-实现"><a href="#循环队列的c-实现" class="headerlink" title="循环队列的c++实现"></a>循环队列的c++实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">const int maxqueue=5;</div><div class="line">typedef char queue_entry;</div><div class="line">enum error_code &#123;success, overflow, underflow, fail&#125;;</div><div class="line">class queue</div><div class="line">&#123; protected:</div><div class="line">    int front, rear;        //indicators of the front and rear</div><div class="line">    queue_entry entry[maxqueue];</div><div class="line">  public:</div><div class="line">    queue();            //constructor</div><div class="line">    bool empty() const;</div><div class="line">    error_code serve();</div><div class="line">    error_code append(const queue_entry &amp;item);</div><div class="line">    error_code retrieve(queue_entry &amp;item) const;</div><div class="line">    void print() const;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class extended_queue: public queue</div><div class="line">&#123; public:</div><div class="line">    extended_queue();      //constructor of derived class</div><div class="line">    int size() const;</div><div class="line">    void clear();</div><div class="line">    bool full() const;</div><div class="line">    error_code serve_and_retrieve(queue_entry &amp;item);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">queue::queue( )      //build an empty queue</div><div class="line">&#123;  front=0;</div><div class="line">   rear=0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool queue::empty( ) const</div><div class="line">&#123;  return rear==front;  &#125;</div><div class="line"></div><div class="line">error_code queue::append(const queue_entry &amp;item)</div><div class="line">&#123; if ( (rear+1)%maxqueue==front)</div><div class="line">    return overflow;</div><div class="line">  entry[rear]=item;</div><div class="line">  rear=(rear+1)%maxqueue;</div><div class="line">  return success;</div><div class="line">&#125;</div><div class="line"></div><div class="line">error_code queue::serve( )</div><div class="line">&#123; if (rear==front)</div><div class="line">    return underflow;</div><div class="line">  front=(front+1)%maxqueue; </div><div class="line">  return success;</div><div class="line">&#125;</div><div class="line"></div><div class="line">error_code queue::retrieve(queue_entry &amp;item) const</div><div class="line">&#123; if (front==rear)      //if (empty( ))</div><div class="line">    return fail;</div><div class="line">  item=entry[front];</div><div class="line">  return success;</div><div class="line">&#125;</div><div class="line">void queue::print() const</div><div class="line">&#123; if (rear==front)</div><div class="line">&#123;cout&lt;&lt;&quot;空队列&quot;&lt;&lt;endl;</div><div class="line">    return;</div><div class="line">&#125;</div><div class="line"> if (rear&gt;front)</div><div class="line">   for(int i=front;i&lt;rear;i++)</div><div class="line">     cout&lt;&lt;entry[i]&lt;&lt;&quot;  &quot;;</div><div class="line"> else</div><div class="line"> &#123; for(int i=front;i&lt;maxqueue;i++)</div><div class="line">     cout&lt;&lt;entry[i]&lt;&lt;&quot;  &quot;;</div><div class="line">   for(int i=0;i&lt;rear;i++)</div><div class="line">     cout&lt;&lt;entry[i]&lt;&lt;&quot;  &quot;;</div><div class="line"> &#125;</div><div class="line"> cout&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">extended_queue::extended_queue():queue()&#123;&#125;</div><div class="line"></div><div class="line">int extended_queue::size() const</div><div class="line">&#123; </div><div class="line">	if (rear&gt;=front)</div><div class="line">   		return rear-front;</div><div class="line"> 	else</div><div class="line">   		return maxqueue+rear-front;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void extended_queue::clear()</div><div class="line">&#123;  </div><div class="line">	front=rear=0;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">bool extended_queue::full() const</div><div class="line">&#123;  </div><div class="line">	return (rear+1) % maxqueue==front;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">error_code extended_queue::serve_and_retrieve(queue_entry &amp;item)</div><div class="line">&#123; </div><div class="line">	if (front==rear)     </div><div class="line">		return fail;</div><div class="line">	item=entry[front];</div><div class="line">	front=(front+1) % maxqueue; </div><div class="line">	return success;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编写测试代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &quot;queue.cpp&quot;</div><div class="line">#include &lt;ctype.h&gt;</div><div class="line">using namespace std;</div><div class="line">void help()</div><div class="line">&#123; cout&lt;&lt;&quot;A--append      S--serve     E--empty &quot;&lt;&lt;endl;</div><div class="line">  cout&lt;&lt;&quot;#--size        P--print     Q--quit&quot;&lt;&lt;endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char get_command()</div><div class="line">&#123; char command;</div><div class="line">  cout&lt;&lt;&quot;输入一个操作命令: &quot;;</div><div class="line">  while(1)</div><div class="line">  &#123; cin&gt;&gt;command;</div><div class="line">    command=toupper(command);</div><div class="line">    if (command==&apos;A&apos;||command==&apos;S&apos;||command==&apos;E&apos;||command==&apos;#&apos;||command==&apos;P&apos;||command==&apos;Q&apos;)</div><div class="line">	 break;</div><div class="line">	else</div><div class="line">     cout&lt;&lt;&quot;输入一个有效操作命令: &quot;;</div><div class="line">  &#125;</div><div class="line">  return command;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool do_command(char c, extended_queue &amp;test_queue)</div><div class="line">&#123; bool not_quit=true;</div><div class="line">  char item;</div><div class="line">  switch(c) &#123;</div><div class="line">   case &apos;A&apos;: </div><div class="line">	 cout&lt;&lt;&quot;输入一个字符: &quot;;</div><div class="line">	 cin&gt;&gt;item;</div><div class="line">     if (test_queue.append(item)==overflow)</div><div class="line">	   cout&lt;&lt;&quot;队列已满&quot;&lt;&lt;endl;</div><div class="line">	 break;</div><div class="line">   case &apos;S&apos;:</div><div class="line">     if(test_queue.serve()==underflow)</div><div class="line">	   cout&lt;&lt;&quot;队列为空&quot;&lt;&lt;endl;</div><div class="line">	 break;</div><div class="line">   case &apos;E&apos;:</div><div class="line">     if(test_queue.empty())</div><div class="line">	   cout&lt;&lt;&quot;队列为空&quot;&lt;&lt;endl;</div><div class="line">	 else</div><div class="line">	   cout&lt;&lt;&quot;队列不为空&quot;&lt;&lt;endl;</div><div class="line">	 break;</div><div class="line">   case &apos;P&apos;:</div><div class="line">     cout&lt;&lt;&quot;队列内容是：&quot;;</div><div class="line">	 test_queue.print();</div><div class="line">	 break;</div><div class="line">   case &apos;#&apos;:</div><div class="line">     cout&lt;&lt;&quot;队列大小是：&quot;;</div><div class="line">	 cout&lt;&lt;test_queue.size()&lt;&lt;endl;</div><div class="line">	 break;</div><div class="line">   case &apos;Q&apos;:not_quit=false;</div><div class="line">  &#125;</div><div class="line">  return not_quit;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123; extended_queue test_queue;</div><div class="line">  help();</div><div class="line">  while(do_command(get_command(),test_queue));</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -210,7 +220,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DWZ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
@@ -220,7 +230,729 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/27/学习DWZ框架小结/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/17/数据结构-队列的实现/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据结构-顺序栈的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/16/数据结构-顺序栈的实现/">数据结构-顺序栈的实现</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/16/数据结构-顺序栈的实现/" class="archive-article-date">
+  	<time datetime="2018-01-16T14:59:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构-顺序栈"><a href="#数据结构-顺序栈" class="headerlink" title="数据结构-顺序栈"></a>数据结构-顺序栈</h1><p>栈是一种受限的线性表，其受限型体现在所有插入与删除都在表的同一端进行，这一端也称为栈顶。主要以下几个操作</p>
+<ul>
+<li><strong>向栈内压入一个元素push()</strong></li>
+<li><strong>从栈顶弹出一个元素（删除）pop()</strong></li>
+<li><strong>判断栈是否为空empty()</strong></li>
+<li><strong>返回栈顶但不删除成员top()</strong></li>
+</ul>
+<hr>
+<p>本例中栈定义通过C++模板类实现，实现思路及代码来自王治和教授数据结构课堂的总结</p>
+<h3 id="栈的c-实现"><a href="#栈的c-实现" class="headerlink" title="栈的c++实现"></a>栈的c++实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">const int maxStack=8;</div><div class="line">typedef int stack_entry;</div><div class="line">enum error_code&#123;</div><div class="line">	success,overflow,underflow,fail</div><div class="line">&#125;;</div><div class="line">template &lt;class stack_entry&gt;</div><div class="line">class stack&#123;</div><div class="line">	private:</div><div class="line">		int count;</div><div class="line">		stack_entry entry[maxStack];</div><div class="line">	public:</div><div class="line">		stack();</div><div class="line">		error_code push(const stack_entry &amp;item);</div><div class="line">		error_code pop();</div><div class="line">		bool empty() const;</div><div class="line">		error_code top(stack_entry &amp;item);</div><div class="line">&#125;;</div><div class="line">template &lt;class stack_entry&gt;</div><div class="line">stack&lt;stack_entry&gt;::stack()</div><div class="line">&#123;</div><div class="line">    count = 0;</div><div class="line">&#125;</div><div class="line">//入栈</div><div class="line">template &lt;class stack_entry&gt;</div><div class="line">error_code stack&lt;stack_entry&gt;::push(const stack_entry &amp;item)&#123;</div><div class="line">	//const修饰函数参数时，该参数在函数内不可改变</div><div class="line">	//item=1;编译出错 </div><div class="line">	error_code outcome=success;</div><div class="line">	if(count&gt;=maxStack)</div><div class="line">		outcome=overflow;</div><div class="line">	else&#123;</div><div class="line">		entry[count++]=item;		</div><div class="line">	&#125;</div><div class="line">	return outcome;</div><div class="line">&#125; </div><div class="line">//出栈</div><div class="line">template &lt;class stack_entry&gt;</div><div class="line">error_code stack&lt;stack_entry&gt;::pop()&#123;</div><div class="line">	error_code outcome=success;</div><div class="line">	if(count==0)</div><div class="line">		outcome=underflow;</div><div class="line">	else</div><div class="line">		--count;</div><div class="line">	return outcome;</div><div class="line">&#125;</div><div class="line">//判断栈是否为空 </div><div class="line">template &lt;class stack_entry&gt;</div><div class="line">bool stack&lt;stack_entry&gt;::empty() const&#123;</div><div class="line">	bool outcome=true;</div><div class="line">	if(count&gt;0)</div><div class="line">		outcome=false;</div><div class="line">	return outcome;</div><div class="line">&#125;</div><div class="line">//读出栈顶元素 </div><div class="line">template &lt;class stack_entry&gt;</div><div class="line">error_code stack&lt;stack_entry&gt;::top(stack_entry &amp;item)&#123;</div><div class="line">	error_code outcome=success;</div><div class="line">	if(count==0)</div><div class="line">		outcome=fail;</div><div class="line">	else&#123;</div><div class="line">		item=entry[count-1];</div><div class="line">		cout&lt;&lt;item&lt;&lt;endl;	</div><div class="line">	&#125;</div><div class="line">	return  outcome;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编写测试代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &quot;stack.cpp&quot;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line">	stack&lt;int&gt; intStack;</div><div class="line">	for(int i=0;i&lt;8;i++)&#123;</div><div class="line">		intStack.push(i);</div><div class="line">	&#125;</div><div class="line">	if(intStack.empty())</div><div class="line">		cout&lt;&lt;&quot;该栈为空！&quot;&lt;&lt;endl;</div><div class="line">	else&#123;</div><div class="line">		cout&lt;&lt;&quot;该栈不为空！&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	intStack.pop();</div><div class="line">	int topItem;</div><div class="line">	intStack.top(topItem);</div><div class="line">	cout&lt;&lt;topItem&lt;&lt;endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/16/数据结构-顺序栈的实现/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-常见的HTTP状态码和提示信息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/02/常见的HTTP状态码和提示信息/">常见的HTTP状态码和提示信息</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/02/常见的HTTP状态码和提示信息/" class="archive-article-date">
+  	<time datetime="2017-12-02T09:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HTTP状态码的分类"><a href="#HTTP状态码的分类" class="headerlink" title="HTTP状态码的分类"></a>HTTP状态码的分类</h3><p><strong>HTTP状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：</strong><br>| 分类 | 分类描述 |<br>| ————- |————-|<br>| 1<strong> | 信息，服务器收到请求，需要请求者继续执行操作 |<br>| 2</strong> | 成功，操作被成功接收并处理 |<br>| 3<strong> | 重定向，需要进一步的操作以完成请求 |<br>| 4</strong> | 客户端错误，请求包含语法错误或无法完成请求 |<br>| 5** |     服务器错误，服务器在处理请求的过程中发生了错误 |</p>
+<h3 id="服务器向用户返回的状态码和提示信息常见的有下面这些："><a href="#服务器向用户返回的状态码和提示信息常见的有下面这些：" class="headerlink" title="服务器向用户返回的状态码和提示信息常见的有下面这些："></a>服务器向用户返回的状态码和提示信息常见的有下面这些：</h3><ul>
+<li>200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</li>
+<li>201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</li>
+<li>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</li>
+<li>204 NO CONTENT - [DELETE]：用户删除数据成功。</li>
+<li>400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</li>
+<li>401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</li>
+<li>403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</li>
+<li>404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</li>
+<li>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</li>
+<li>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</li>
+<li>422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</li>
+<li>500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/02/常见的HTTP状态码和提示信息/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Linux服务器下查看tomcat服务是否启动，重启等基本操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/16/Linux服务器下查看tomcat服务是否启动，重启等基本操作/">Linux服务器下查看tomcat服务是否启动，重启等基本操作</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/16/Linux服务器下查看tomcat服务是否启动，重启等基本操作/" class="archive-article-date">
+  	<time datetime="2017-11-16T11:56:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="首先要进入tomcat的bin目录"><a href="#首先要进入tomcat的bin目录" class="headerlink" title="首先要进入tomcat的bin目录"></a>首先要进入tomcat的bin目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /你的安装目录/tomcat/bin</div></pre></td></tr></table></figure>
+<h3 id="查看服务启动情况"><a href="#查看服务启动情况" class="headerlink" title="查看服务启动情况"></a>查看服务启动情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ps -ef|grep java</div><div class="line"></div><div class="line">此条命令具体含义</div><div class="line">ps:将某个进程显示出来</div><div class="line">-A 　显示所有程序。 </div><div class="line">-e 　此参数的效果和指定&quot;A&quot;参数相同。</div><div class="line">-f 　显示UID,PPIP,C与STIME栏位。 </div><div class="line">grep命令是查找</div></pre></td></tr></table></figure>
+<h3 id="通过输出情况判断服务是否启动"><a href="#通过输出情况判断服务是否启动" class="headerlink" title="通过输出情况判断服务是否启动"></a>通过输出情况判断服务是否启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">如果返回类似以下信息说明tomcat没有启动</div><div class="line">502 19258  8770   0  7:14下午 ttys000    0:00.01 grep tomcat</div><div class="line">如果返回类似以下信息出现，说明tomcat是启动了，第一个是启动该进程的用户，第二个是该进程的id，第三个 是占用CPU的百分比，</div><div class="line">第四个是占用内存的百分比</div><div class="line"># ps -ef|grep tomcat</div><div class="line">root 7010     1   0  7:18下午 ttys000    0:28.01 /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin/java -Djava.util.logging.config.file=/Applications/apache-tomcat-7.0.62/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.endorsed.dirs=/Applications/apache-tomcat-7.0.62/endorsed -classpath /Applications/apache-tomcat-7.0.62/bin/bootstrap.jar:/Applications/apache-tomcat-7.0.62/bin/tomcat-juli.jar -Dcatalina.base=/Applications/apache-tomcat-7.0.62 -Dcatalina.home=/Applications/apache-tomcat-7.0.62 -Djava.io.tmpdir=/Applications/apache-tomcat-7.0.62/temp org.apache.catalina.startup.Bootstrap start</div><div class="line">    0 19392 19342   0  7:18下午 ttys000    0:00.00 grep tomcat</div></pre></td></tr></table></figure>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./startup.sh           //直接启动</div><div class="line"></div><div class="line">nohup ./startup.sh &amp;   //作为服务启动</div><div class="line"></div><div class="line">./catalina.sh run      //控制台动态输出方式启动，动态的显示tomcat控制台输出信息，Ctrl+c退出并停止服务</div></pre></td></tr></table></figure>
+<h3 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shutdown.sh</div></pre></td></tr></table></figure>
+<h3 id="关闭和启动后，可以再次通过ps-ef-grep-java-命令来查看服务状态，确认你的操作是否执行"><a href="#关闭和启动后，可以再次通过ps-ef-grep-java-命令来查看服务状态，确认你的操作是否执行" class="headerlink" title="关闭和启动后，可以再次通过ps -ef|grep java 命令来查看服务状态，确认你的操作是否执行"></a>关闭和启动后，可以再次通过<strong>ps -ef|grep java</strong> 命令来查看服务状态，确认你的操作是否执行</h3><h3 id="有时关闭服务操作不成功，可以使用"><a href="#有时关闭服务操作不成功，可以使用" class="headerlink" title="有时关闭服务操作不成功，可以使用"></a>有时关闭服务操作不成功，可以使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill -9 7010</div></pre></td></tr></table></figure>
+<h3 id="来杀死进程，需要注意的是7010是当前tomcat进程的id"><a href="#来杀死进程，需要注意的是7010是当前tomcat进程的id" class="headerlink" title="来杀死进程，需要注意的是7010是当前tomcat进程的id"></a>来杀死进程，需要注意的是7010是当前tomcat进程的id</h3><h3 id="linux下实时查看tomcat运行日志"><a href="#linux下实时查看tomcat运行日志" class="headerlink" title="linux下实时查看tomcat运行日志"></a>linux下实时查看tomcat运行日志</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd ..    //返回上一级目录</div><div class="line"></div><div class="line">cd tomcat/logs  //切换目录</div><div class="line"></div><div class="line">tail -f catalina.out //查看日志，同样Ctrl+c退出</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/16/Linux服务器下查看tomcat服务是否启动，重启等基本操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-web实现文件打包下载功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/09/Java-web实现文件打包下载功能/">Java web实现文件打包下载功能</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/09/Java-web实现文件打包下载功能/" class="archive-article-date">
+  	<time datetime="2017-10-09T05:41:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="首先需要实现一个文件打包下载的辅助类"><a href="#首先需要实现一个文件打包下载的辅助类" class="headerlink" title="首先需要实现一个文件打包下载的辅助类"></a>首先需要实现一个文件打包下载的辅助类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line">public class CustomFileUtil &#123;</div><div class="line">	  </div><div class="line">    /** </div><div class="line">     *  </div><div class="line">     * @param inputFileName </div><div class="line">     *            输入一个文件夹 </div><div class="line">     * @param zipFileName </div><div class="line">     *            输出一个压缩文件夹，打包后文件名字 </div><div class="line">     * @throws Exception </div><div class="line">     */  </div><div class="line">    public static void zip(String inputFileName, String zipFileName) throws Exception &#123;  </div><div class="line">        zip(zipFileName, new File(inputFileName));  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    private static void zip(String zipFileName, File inputFile) throws Exception &#123;  </div><div class="line">        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFileName));  </div><div class="line">        zip(out, inputFile, &quot;&quot;);  </div><div class="line">        out.close();  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    private static void zip(ZipOutputStream out, File f, String base) throws Exception &#123;  </div><div class="line">        if (f.isDirectory()) &#123; // 判断是否为目录  </div><div class="line">            File[] fl = f.listFiles();  </div><div class="line">            out.putNextEntry(new ZipEntry(base + &quot;/&quot;));  </div><div class="line">            base = base.length() == 0 ? &quot;&quot; : base + &quot;/&quot;;  </div><div class="line">            for (int i = 0; i &lt; fl.length; i++) &#123;  </div><div class="line">                zip(out, fl[i], base + fl[i].getName());  </div><div class="line">            &#125;  </div><div class="line">        &#125; else &#123; // 压缩目录中的所有文件  </div><div class="line">            out.putNextEntry(new ZipEntry(base));  </div><div class="line">            FileInputStream in = new FileInputStream(f);  </div><div class="line">            int b;  </div><div class="line">            while ((b = in.read()) != -1) &#123;  </div><div class="line">                out.write(b);</div><div class="line">            &#125;  </div><div class="line">            in.close();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    /** </div><div class="line">     * 下载文件 </div><div class="line">     *  </div><div class="line">     * @param file 文件路径</div><div class="line">     * @param response </div><div class="line">     * @param isDelete 是否删除生成的压缩包</div><div class="line">     */  </div><div class="line">    public static void downloadFile(File file,HttpServletResponse response,boolean isDelete) &#123;</div><div class="line">        try &#123;</div><div class="line">            // 以流的形式下载文件。</div><div class="line">            BufferedInputStream fis = new BufferedInputStream(new FileInputStream(file.getPath()));</div><div class="line">            byte[] buffer = new byte[fis.available()];</div><div class="line">            fis.read(buffer);</div><div class="line">            fis.close();</div><div class="line">            // 清空response</div><div class="line">            response.reset();</div><div class="line">            OutputStream toClient = new BufferedOutputStream(response.getOutputStream());</div><div class="line">            response.setContentType(&quot;application/octet-stream&quot;);</div><div class="line">            response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot; + new String(file.getName().getBytes(&quot;UTF-8&quot;),&quot;ISO-8859-1&quot;));</div><div class="line">            toClient.write(buffer);</div><div class="line">            toClient.flush();</div><div class="line">            toClient.close();</div><div class="line">            if(isDelete)</div><div class="line">            &#123;</div><div class="line">                file.delete();        //是否将生成的服务器端文件删除</div><div class="line">            &#125;</div><div class="line">         &#125; </div><div class="line">         catch (IOException ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void zipFile(List&lt;File&gt; files, ZipOutputStream outputStream) throws IOException, ServletException &#123;</div><div class="line">        try &#123;</div><div class="line">            int size = files.size();</div><div class="line">            // 压缩列表中的文件</div><div class="line">            for (int i = 0; i &lt; size; i++) &#123;</div><div class="line">                File file = (File) files.get(i);</div><div class="line">                zipFile(file, outputStream);</div><div class="line">            &#125;</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            throw e;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public static void zipFile(File inputFile, ZipOutputStream outputstream) throws IOException, ServletException &#123;</div><div class="line">        try &#123;</div><div class="line">            if (inputFile.exists()) &#123;</div><div class="line">                if (inputFile.isFile()) &#123;</div><div class="line">                    FileInputStream inStream = new FileInputStream(inputFile);</div><div class="line">                    BufferedInputStream bInStream = new BufferedInputStream(inStream);</div><div class="line">                    ZipEntry entry = new ZipEntry(inputFile.getName());</div><div class="line">                    outputstream.putNextEntry(entry);</div><div class="line"></div><div class="line">                    final int MAX_BYTE = 10 * 1024 * 1024; // 最大的流为10M</div><div class="line">                    long streamTotal = 0; // 接受流的容量</div><div class="line">                    int streamNum = 0; // 流需要分开的数量</div><div class="line">                    int leaveByte = 0; // 文件剩下的字符数</div><div class="line">                    byte[] inOutbyte; // byte数组接受文件的数据</div><div class="line"></div><div class="line">                    streamTotal = bInStream.available(); // 通过available方法取得流的最大字符数</div><div class="line">                    streamNum = (int) Math.floor(streamTotal / MAX_BYTE); // 取得流文件需要分开的数量</div><div class="line">                    leaveByte = (int) streamTotal % MAX_BYTE; // 分开文件之后,剩余的数量</div><div class="line"></div><div class="line">                    if (streamNum &gt; 0) &#123;</div><div class="line">                        for (int j = 0; j &lt; streamNum; ++j) &#123;</div><div class="line">                            inOutbyte = new byte[MAX_BYTE];</div><div class="line">                            // 读入流,保存在byte数组</div><div class="line">                            bInStream.read(inOutbyte, 0, MAX_BYTE);</div><div class="line">                            outputstream.write(inOutbyte, 0, MAX_BYTE); // 写出流</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    // 写出剩下的流数据</div><div class="line">                    inOutbyte = new byte[leaveByte];</div><div class="line">                    bInStream.read(inOutbyte, 0, leaveByte);</div><div class="line">                    outputstream.write(inOutbyte);</div><div class="line">                    outputstream.closeEntry(); // Closes the current ZIP entry</div><div class="line">                    // and positions the stream for</div><div class="line">                    // writing the next entry</div><div class="line">                    bInStream.close(); // 关闭</div><div class="line">                    inStream.close();</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                throw new ServletException(&quot;文件不存在！&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            throw e;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="控制器实现下载功能，其中File-separatorChar是File类的静态字段，由于windows系统和linux系统下的路径分割符是不一样的，所以在此使用File-separatorChar，来默认在windows中为-分隔符-Linux下为-分割符"><a href="#控制器实现下载功能，其中File-separatorChar是File类的静态字段，由于windows系统和linux系统下的路径分割符是不一样的，所以在此使用File-separatorChar，来默认在windows中为-分隔符-Linux下为-分割符" class="headerlink" title="控制器实现下载功能，其中File.separatorChar是File类的静态字段，由于windows系统和linux系统下的路径分割符是不一样的，所以在此使用File.separatorChar，来默认在windows中为\分隔符,Linux下为/分割符"></a>控制器实现下载功能，其中File.separatorChar是File类的静态字段，由于windows系统和linux系统下的路径分割符是不一样的，所以在此使用File.separatorChar，来默认在windows中为\分隔符,Linux下为/分割符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value =&quot;/BatchDownload&quot;, method = RequestMethod.GET)</div><div class="line">@ResponseBody</div><div class="line">public void BatchDownload(</div><div class="line">	@RequestParam(value = &quot;ids&quot;, required = true) String ids,</div><div class="line">	HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException&#123;</div><div class="line">	//文件路径最后带分隔符&quot;/&quot;</div><div class="line">	String inputFileName = request.getSession().getServletContext().getRealPath(&quot;upload&quot;)+File.separatorChar+&quot;qrcode&quot;+File.separatorChar+ids+File.separatorChar; </div><div class="line">       List&lt;File&gt; files = new ArrayList&lt;File&gt;();</div><div class="line">       File Allfile = new File(inputFileName);</div><div class="line">       if (Allfile.exists()) &#123;</div><div class="line">           File[] fileArr = Allfile.listFiles();</div><div class="line">           for (File file2 : fileArr) &#123;</div><div class="line">               files.add(file2);</div><div class="line">           &#125;</div><div class="line">       &#125; </div><div class="line">       //压缩包名字</div><div class="line">       String fileName =this_ResListService.selectById(ids).getName()+&quot;.zip&quot;;</div><div class="line">       // 在服务器端创建打包下载的临时文件</div><div class="line">       String outFilePath = inputFileName;</div><div class="line">       File fileZip = new File(outFilePath + fileName);</div><div class="line">       FileOutputStream outStream = new FileOutputStream(fileZip); // 文件输出流</div><div class="line">       ZipOutputStream toClient = new ZipOutputStream(outStream);// 压缩流</div><div class="line">       CustomFileUtil.zipFile(files, toClient);</div><div class="line">       outStream.close();</div><div class="line">       CustomFileUtil.downloadFile(fileZip, response, true);   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="最后需要在前台请求打包下载，在这也把代码贴上，"><a href="#最后需要在前台请求打包下载，在这也把代码贴上，" class="headerlink" title="最后需要在前台请求打包下载，在这也把代码贴上，"></a>最后需要在前台请求打包下载，在这也把代码贴上，</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/*批量下载二维码*/</div><div class="line">function BatchDownload()</div><div class="line">&#123;</div><div class="line">	var url=&apos;/ResSeat/BatchDownload.do?ids=&apos;+resrantid;</div><div class="line">    if(url)&#123;</div><div class="line">       location.href = url;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="前台请求时一定注意，一定要写上"><a href="#前台请求时一定注意，一定要写上" class="headerlink" title="前台请求时一定注意，一定要写上"></a>前台请求时一定注意，一定要写上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">location.href = url;  //如果不写这一行代码，打包的文件只会缓存在Response里，不会下载下来</div></pre></td></tr></table></figure>
+<h4 id="贴代码的原因，也是如此，作为一个新手，我第一次实现打包下载功能时，前台是用ajax请求的，并且没有跳转，来来去去修改了好几次打包下载的后台代码，最后打开浏览器查看才发现，文件是缓存到浏览器了，但是没有跳转下载。"><a href="#贴代码的原因，也是如此，作为一个新手，我第一次实现打包下载功能时，前台是用ajax请求的，并且没有跳转，来来去去修改了好几次打包下载的后台代码，最后打开浏览器查看才发现，文件是缓存到浏览器了，但是没有跳转下载。" class="headerlink" title="贴代码的原因，也是如此，作为一个新手，我第一次实现打包下载功能时，前台是用ajax请求的，并且没有跳转，来来去去修改了好几次打包下载的后台代码，最后打开浏览器查看才发现，文件是缓存到浏览器了，但是没有跳转下载。"></a>贴代码的原因，也是如此，作为一个新手，我第一次实现打包下载功能时，前台是用ajax请求的，并且没有跳转，来来去去修改了好几次打包下载的后台代码，最后打开浏览器查看才发现，文件是缓存到浏览器了，但是没有跳转下载。</h4><h4 id="至此，打包下载的功能已完全实现，适用于所有文件。"><a href="#至此，打包下载的功能已完全实现，适用于所有文件。" class="headerlink" title="至此，打包下载的功能已完全实现，适用于所有文件。"></a>至此，打包下载的功能已完全实现，适用于所有文件。</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/09/Java-web实现文件打包下载功能/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spring通过xml方式配置AOP时，提示错误信息：匹配的通配符是严格的，但是对于元素-aop：aspectj-自动代理。" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/09/spring通过xml方式配置AOP时，提示错误信息：匹配的通配符是严格的，但是对于元素-aop：aspectj-自动代理。/">spring通过xml方式配置AOP时，提示错误信息：匹配的通配符是严格的，但是对于元素&#39;aop：aspectj- 自动代理。</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/09/spring通过xml方式配置AOP时，提示错误信息：匹配的通配符是严格的，但是对于元素-aop：aspectj-自动代理。/" class="archive-article-date">
+  	<time datetime="2017-10-08T17:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在spring中配置AOP切面时，提示错误信息"><a href="#在spring中配置AOP切面时，提示错误信息" class="headerlink" title="在spring中配置AOP切面时，提示错误信息"></a>在spring中配置AOP切面时，提示错误信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- cvc-complex-type.2.4.c: </div><div class="line">- The matching wildcard is strict, </div><div class="line">- but no declaration can be found for element &apos;aop:aspectj-autoproxy&apos;.</div></pre></td></tr></table></figure>
+<h3 id="是由于Spring-配置文件中的顺序颠倒引起的，将"><a href="#是由于Spring-配置文件中的顺序颠倒引起的，将" class="headerlink" title="是由于Spring 配置文件中的顺序颠倒引起的，将"></a>是由于Spring 配置文件中的顺序颠倒引起的，将</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xsi:schemaLocation=</div><div class="line">http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/aop</div></pre></td></tr></table></figure>
+<h3 id="顺序调整为"><a href="#顺序调整为" class="headerlink" title="顺序调整为"></a>顺序调整为</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xsi:schemaLocation=</div><div class="line">http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/09/spring通过xml方式配置AOP时，提示错误信息：匹配的通配符是严格的，但是对于元素-aop：aspectj-自动代理。/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java自动创建多层目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/java自动创建多层目录/">java自动创建多层目录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/java自动创建多层目录/" class="archive-article-date">
+  	<time datetime="2017-10-07T11:44:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="根据path是否存在，创建多层目录"><a href="#根据path是否存在，创建多层目录" class="headerlink" title="根据path是否存在，创建多层目录"></a>根据path是否存在，创建多层目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * 创建 目录 </div><div class="line"> * @param path </div><div class="line"> */  </div><div class="line">public static void mkdirs(String path ) &#123;  </div><div class="line">     File file =new File(path );     </div><div class="line">     if (!file.exists() &amp;&amp; !file.isDirectory()) &#123;  </div><div class="line">         file.mkdirs();  </div><div class="line">     &#125;  </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h4 id="当文件夹不存在时，mkdirs会自动创建多层目录，区别于mkdir．-mkdir如果父目录不存在则会抛出异常"><a href="#当文件夹不存在时，mkdirs会自动创建多层目录，区别于mkdir．-mkdir如果父目录不存在则会抛出异常" class="headerlink" title="当文件夹不存在时，mkdirs会自动创建多层目录，区别于mkdir．(mkdir如果父目录不存在则会抛出异常)"></a>当文件夹不存在时，mkdirs会自动创建多层目录，区别于mkdir．(mkdir如果父目录不存在则会抛出异常)</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/java自动创建多层目录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java使用zxing生成带logo，文字说明二维码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/java使用zxing生成带logo，文字说明二维码/">java使用zxing生成带logo，文字说明二维码</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/java使用zxing生成带logo，文字说明二维码/" class="archive-article-date">
+  	<time datetime="2017-10-07T11:36:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="二维码生成解析帮助类"><a href="#二维码生成解析帮助类" class="headerlink" title="二维码生成解析帮助类"></a>二维码生成解析帮助类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div></pre></td><td class="code"><pre><div class="line">import java.awt.BasicStroke;  </div><div class="line">import java.awt.Graphics;  </div><div class="line">import java.awt.Graphics2D;  </div><div class="line">import java.awt.Image;  </div><div class="line">import java.awt.Shape;  </div><div class="line">import java.awt.geom.RoundRectangle2D;  </div><div class="line">import java.awt.image.BufferedImage;  </div><div class="line">import java.io.File;  </div><div class="line">import java.io.IOException;  </div><div class="line">import java.io.OutputStream;  </div><div class="line">import java.util.Hashtable;  </div><div class="line">import java.util.UUID;  </div><div class="line">  </div><div class="line">import javax.imageio.ImageIO;  </div><div class="line">  </div><div class="line">import com.google.zxing.BarcodeFormat;  </div><div class="line">import com.google.zxing.BinaryBitmap;  </div><div class="line">import com.google.zxing.DecodeHintType;  </div><div class="line">import com.google.zxing.EncodeHintType;  </div><div class="line">import com.google.zxing.MultiFormatReader;  </div><div class="line">import com.google.zxing.MultiFormatWriter;  </div><div class="line">import com.google.zxing.Result;  </div><div class="line">import com.google.zxing.common.BitMatrix;  </div><div class="line">import com.google.zxing.common.HybridBinarizer;  </div><div class="line">import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;  </div><div class="line">  </div><div class="line">/**  </div><div class="line"> * 二维码 生成、解析器 帮助类    </div><div class="line"> *  </div><div class="line"> */    </div><div class="line">public class QRCodeUtil &#123;    </div><div class="line">     private static final String CHARSET = &quot;utf-8&quot;;    </div><div class="line">        private static final String FORMAT_NAME = &quot;png&quot;;    </div><div class="line">        // 二维码尺寸    </div><div class="line">        private static final int QRCODE_SIZE = 300;    </div><div class="line">        // LOGO宽度    </div><div class="line">        private static final int WIDTH = 60;    </div><div class="line">        // LOGO高度    </div><div class="line">        private static final int HEIGHT = 60;    </div><div class="line">    </div><div class="line">          </div><div class="line">        /**  </div><div class="line">         *  检查路径 图片是否存在  </div><div class="line">         * @param imgPath  </div><div class="line">         * @return  </div><div class="line">         * @throws IOException  </div><div class="line">         */    </div><div class="line">        private static BufferedImage CheckImageExist(String imgPath) throws IOException&#123;    </div><div class="line">            File file = new File(imgPath);    </div><div class="line">            if (!file.exists()) &#123;    </div><div class="line">                System.err.println(&quot;&quot;+imgPath+&quot;   该文件不存在！&quot;);    </div><div class="line">                return null;    </div><div class="line">            &#125;    </div><div class="line">            BufferedImage src = ImageIO.read(new File(imgPath));    </div><div class="line">            return src;    </div><div class="line">        &#125;    </div><div class="line">            </div><div class="line">          </div><div class="line">        /**  </div><div class="line">         * 创建 二维码所需图片   </div><div class="line">         * @param content   内容  </div><div class="line">         * @param imgPath   Logo图片地址  </div><div class="line">         * @param needCompress 是否压缩Logo大小 </div><div class="line">         * @param needDescription 是否需要底部描述  </div><div class="line">         * @return    </div><div class="line">         * @throws Exception  </div><div class="line">         */    </div><div class="line">        private static BufferedImage createImage(String content,BufferedImage logoImage, String bottomDes,  </div><div class="line">                boolean needCompress) throws Exception &#123;    </div><div class="line">            Hashtable hints = new Hashtable();    </div><div class="line">            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H); //容错级别 H-&gt;30%    </div><div class="line">            hints.put(EncodeHintType.CHARACTER_SET, CHARSET);    </div><div class="line">            hints.put(EncodeHintType.MARGIN, 1);    </div><div class="line">            BitMatrix bitMatrix = new MultiFormatWriter().encode(content,    </div><div class="line">                    BarcodeFormat.QR_CODE, QRCODE_SIZE, QRCODE_SIZE, hints);    </div><div class="line">            int width = bitMatrix.getWidth();    </div><div class="line">            int height = bitMatrix.getHeight();   </div><div class="line">            int tempHeight = height;  </div><div class="line">            boolean needDescription=(null==bottomDes&amp;&amp;&quot;&quot;.equals(bottomDes));  </div><div class="line">            if (needDescription) &#123;  </div><div class="line">                tempHeight += 30;  </div><div class="line">            &#125;   </div><div class="line">            BufferedImage image = new BufferedImage(width, tempHeight,    </div><div class="line">                    BufferedImage.TYPE_INT_RGB);   </div><div class="line">            for (int x = 0; x &lt; width; x++) &#123;    </div><div class="line">                for (int y = 0; y &lt; height; y++) &#123;    </div><div class="line">                    image.setRGB(x, y, bitMatrix.get(x, y) ? 0xFF000000    </div><div class="line">                            : 0xFFFFFFFF);    </div><div class="line">                &#125;    </div><div class="line">            &#125;    </div><div class="line">              </div><div class="line">            if(null==logoImage)    </div><div class="line">                 return image;    </div><div class="line">                </div><div class="line">            // 插入图片    </div><div class="line">            QRCodeUtil.insertImage(image, logoImage, needCompress);  </div><div class="line">              </div><div class="line">            if(needDescription)  </div><div class="line">                 return image;  </div><div class="line">              </div><div class="line">            QRCodeUtil.addFontImage(image, bottomDes);  </div><div class="line">              </div><div class="line">            return image;    </div><div class="line">        &#125;    </div><div class="line">        </div><div class="line">        /** </div><div class="line">         * 添加 底部图片文字 </div><div class="line">         * @param source   图片源 </div><div class="line">         * @param declareText 文字本文 </div><div class="line">         */  </div><div class="line">        private static void addFontImage(BufferedImage source, String declareText) &#123;  </div><div class="line">            BufferedImage textImage = FontImage.getImage(declareText, QRCODE_SIZE, 50);  </div><div class="line">            Graphics2D graph = source.createGraphics();  </div><div class="line">              </div><div class="line">            int width = textImage.getWidth(null);    </div><div class="line">            int height = textImage.getHeight(null);    </div><div class="line">                </div><div class="line">            Image src =textImage;    </div><div class="line">            graph.drawImage(src, 0, QRCODE_SIZE - 20, width, height, null);     </div><div class="line">            graph.dispose();    </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        /**  </div><div class="line">         *  插入Logo图片  </div><div class="line">         * @param source    图片操作对象  </div><div class="line">         * @param imgPath   Logo图片地址  </div><div class="line">         * @param needCompress 是否压缩Logo大小  </div><div class="line">         * @throws Exception  </div><div class="line">         */    </div><div class="line">        private static void insertImage(BufferedImage source,BufferedImage logoImage,    </div><div class="line">                boolean needCompress) throws Exception &#123;    </div><div class="line">            int width = logoImage.getWidth(null);    </div><div class="line">            int height = logoImage.getHeight(null);    </div><div class="line">                </div><div class="line">            Image src =logoImage;    </div><div class="line">            if (needCompress) &#123;   </div><div class="line">                if (width &gt; WIDTH) &#123;    </div><div class="line">                    width = WIDTH;    </div><div class="line">                &#125;    </div><div class="line">                if (height &gt; HEIGHT) &#123;    </div><div class="line">                    height = HEIGHT;    </div><div class="line">                &#125;    </div><div class="line">    </div><div class="line">                Image  image = logoImage.getScaledInstance(width, height,    </div><div class="line">                Image.SCALE_SMOOTH);    </div><div class="line">                BufferedImage tag = new BufferedImage(width, height,    </div><div class="line">                        BufferedImage.TYPE_INT_RGB);    </div><div class="line">                Graphics g = tag.getGraphics();    </div><div class="line">                g.drawImage(image, 0, 0, null);   </div><div class="line">                g.dispose();    </div><div class="line">                src = image;    </div><div class="line">            &#125;    </div><div class="line">            Graphics2D graph = source.createGraphics();    </div><div class="line">            int x = (QRCODE_SIZE - width) / 2;    </div><div class="line">            int y = (QRCODE_SIZE - height) / 2;    </div><div class="line">            graph.drawImage(src, x, y, width, height, null);     </div><div class="line">            Shape shape = new RoundRectangle2D.Float(x, y, width, width, 6, 6);    </div><div class="line">            graph.setStroke(new BasicStroke(3f));    </div><div class="line">            graph.draw(shape);    </div><div class="line">            graph.dispose();    </div><div class="line">        &#125;    </div><div class="line">    </div><div class="line">        /**  </div><div class="line">         * 创建 目录  </div><div class="line">         * @param destPath  </div><div class="line">         */    </div><div class="line">        public static void mkdirs(String destPath) &#123;    </div><div class="line">                File file =new File(destPath);       </div><div class="line">                //当文件夹不存在时，mkdirs会自动创建多层目录，区别于mkdir．(mkdir如果父目录不存在则会抛出异常)    </div><div class="line">                if (!file.exists() &amp;&amp; !file.isDirectory()) &#123;    </div><div class="line">                    file.mkdirs();    </div><div class="line">                &#125;    </div><div class="line">            &#125;    </div><div class="line">            </div><div class="line">          </div><div class="line">        /**  </div><div class="line">         *  生成二维码 (以Logo路径)  </div><div class="line">         * @param content  内容 (若带http:// 会自动跳转)  </div><div class="line">         * @param imgPath  Logo 图片地址  </div><div class="line">         * @param destPath   保存二维码 地址 (没有该目录会自动创建)  </div><div class="line">         * @param bottomDes 底部文字描述 </div><div class="line">         * @param needCompress 是否压缩Logo大小  </div><div class="line">         * @throws Exception  </div><div class="line">         */    </div><div class="line">        public static void encodeOfPath(String content, String imgPath,String bottomDes,String destPath,    </div><div class="line">                boolean needCompress) throws Exception &#123;    </div><div class="line">                </div><div class="line">            BufferedImage image = QRCodeUtil.createImage(content, CheckImageExist(imgPath),    </div><div class="line">                    bottomDes,needCompress);    </div><div class="line">            mkdirs(destPath);    </div><div class="line">            String file = UUID.randomUUID().toString()+&quot;.png&quot;;    </div><div class="line">            ImageIO.write(image, FORMAT_NAME, new File(destPath+&quot;/&quot;+file));    </div><div class="line">        &#125;    </div><div class="line">            </div><div class="line">  </div><div class="line">        /** </div><div class="line">         *  </div><div class="line">         * @param content 内容     </div><div class="line">         * @param logoImage  图片源 LOGO </div><div class="line">         * @param bottomDes 底部描述文字 </div><div class="line">         * @param destPath   保存二维码 地址 (没有该目录会自动创建) </div><div class="line">         * @param needCompress  是否压缩logo </div><div class="line">         * @throws Exception </div><div class="line">         */  </div><div class="line">        public static void encode(String content, BufferedImage logoImage,String bottomDes, String destPath,    </div><div class="line">                boolean needCompress) throws Exception &#123;    </div><div class="line">                </div><div class="line">            BufferedImage image = QRCodeUtil.createImage(content, logoImage, bottomDes,   </div><div class="line">                    needCompress);    </div><div class="line">            mkdirs(destPath);    </div><div class="line">            String file = UUID.randomUUID().toString()+&quot;.png&quot;;    </div><div class="line">            ImageIO.write(image, FORMAT_NAME, new File(destPath+&quot;/&quot;+file));    </div><div class="line">        &#125;    </div><div class="line">          </div><div class="line">        /** </div><div class="line">         *  </div><div class="line">         * @param content  内容     </div><div class="line">         * @param logoImage  图片源LOGO </div><div class="line">         * @param bottomDes 底部描述文字 </div><div class="line">         * @param picName   图片名 </div><div class="line">         * @param destPath     保存二维码 地址 (没有该目录会自动创建) </div><div class="line">         * @param needCompress 是否压缩logo </div><div class="line">         * @throws Exception </div><div class="line">         */  </div><div class="line">        public static void encode(String content, BufferedImage logoImage,String bottomDes,String picName,String destPath,    </div><div class="line">                boolean needCompress) throws Exception &#123;            </div><div class="line">            BufferedImage image=QRCodeUtil.createImage(content, logoImage,bottomDes,   </div><div class="line">                        needCompress);    </div><div class="line">      </div><div class="line">            mkdirs(destPath);    </div><div class="line">            String file = picName+&quot;.png&quot;;    </div><div class="line">            ImageIO.write(image, FORMAT_NAME, new File(destPath+&quot;/&quot;+file));    </div><div class="line">        &#125;   </div><div class="line">          </div><div class="line">  </div><div class="line">        /** </div><div class="line">         *  </div><div class="line">         * @param content  内容 </div><div class="line">         * @param destPath     保存二维码 地址 (没有该目录会自动创建) </div><div class="line">         * @throws Exception </div><div class="line">         */  </div><div class="line">        public static void encode(String content, String destPath) throws Exception &#123;    </div><div class="line">            QRCodeUtil.encode(content, null,null,destPath, false);    </div><div class="line">        &#125;    </div><div class="line">    </div><div class="line">        /** </div><div class="line">         *    </div><div class="line">         * @param content   内容 </div><div class="line">         * @param imgPath    图片源地址LOGO </div><div class="line">         * @param bottomDes 底部描述文字 </div><div class="line">         * @param output    输出流 </div><div class="line">         * @param needCompress 是否压缩logo </div><div class="line">         * @throws Exception </div><div class="line">         */  </div><div class="line">        public static void encodeOfPath(String content, String imgPath,String bottomDes,    </div><div class="line">                OutputStream output, boolean needCompress) throws Exception &#123;    </div><div class="line">            BufferedImage image = QRCodeUtil.createImage(content, CheckImageExist(imgPath), bottomDes,   </div><div class="line">                    needCompress);    </div><div class="line">            ImageIO.write(image, FORMAT_NAME, output);    </div><div class="line">        &#125;    </div><div class="line">            </div><div class="line">        /** </div><div class="line">         *  </div><div class="line">         * @param content 内容 </div><div class="line">         * @param output    输出流 </div><div class="line">         * @throws Exception </div><div class="line">         */  </div><div class="line">        public static void encode(String content, OutputStream output)    </div><div class="line">                throws Exception &#123;    </div><div class="line">            QRCodeUtil.encode(content, null,null, output, false);    </div><div class="line">        &#125;    </div><div class="line">    </div><div class="line">        /**  </div><div class="line">         * 解析 二维码  </div><div class="line">         * @param file 图片文件  </div><div class="line">         * @return  </div><div class="line">         * @throws Exception  </div><div class="line">         */    </div><div class="line">        public static String decode(File file) throws Exception &#123;    </div><div class="line">            BufferedImage image;    </div><div class="line">            image = ImageIO.read(file);    </div><div class="line">            if (image == null) &#123;    </div><div class="line">                return null;    </div><div class="line">            &#125;    </div><div class="line">            BufferedImageLuminanceSource source = new BufferedImageLuminanceSource(    </div><div class="line">                    image);    </div><div class="line">            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));    </div><div class="line">            Result result;    </div><div class="line">            Hashtable hints = new Hashtable();    </div><div class="line">            hints.put(DecodeHintType.CHARACTER_SET, CHARSET);    </div><div class="line">            result = new MultiFormatReader().decode(bitmap, hints);    </div><div class="line">            String resultStr = result.getText();    </div><div class="line">            return resultStr;    </div><div class="line">        &#125;    </div><div class="line">     </div><div class="line">        /**  </div><div class="line">         *  解析二维码  </div><div class="line">         * @param path 图片地址  </div><div class="line">         * @return  </div><div class="line">         * @throws Exception  </div><div class="line">         */   </div><div class="line">        public static String decode(String path) throws Exception &#123;    </div><div class="line">            return QRCodeUtil.decode(new File(path));    </div><div class="line">        &#125;                            </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试生成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) throws Exception &#123;    </div><div class="line">    String text = &quot;http://www.baidu.com&quot;;    </div><div class="line">    QRCodeUtil.encodeOfPath(text, &quot;d:/test/a1.png&quot;,null,&quot;d:/test&quot;, true);    </div><div class="line">    QRCodeUtil.encode(text,&quot;d:/test&quot;); // 不带logo   </div><div class="line">    BufferedImage bi = ImageIO.read(new File(&quot;d:/test/a1.png&quot;));  </div><div class="line">    QRCodeUtil.encode(text,bi,&quot;ok&quot;,&quot;123&quot;,&quot;d:/test&quot;, true);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="注-本文转自yuki，点击跳转"><a href="#注-本文转自yuki，点击跳转" class="headerlink" title="注:本文转自yuki，点击跳转"></a>注:本文转自<strong><em>yuki</em></strong>，<a href="http://blog.csdn.net/qq_19707521/article/details/69568387&quot;&quot;" target="_blank" rel="external">点击跳转</a></h5>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/java使用zxing生成带logo，文字说明二维码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java获取当前请求的url地址及各参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/java获取当前请求的url地址及各参数/">java获取当前请求的url地址及各参数</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/java获取当前请求的url地址及各参数/" class="archive-article-date">
+  	<time datetime="2017-10-07T11:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一获取全路径"><a href="#一获取全路径" class="headerlink" title="一获取全路径"></a>一获取全路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.getRequestURL(); //得到http://localhost:8080/ResSeat/GenerateCode.do</div></pre></td></tr></table></figure>
+<h3 id="二获取协议名和域名"><a href="#二获取协议名和域名" class="headerlink" title="二获取协议名和域名"></a>二获取协议名和域名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">request.getScheme();  //得到协议名 例如：http</div><div class="line">request.getServerName();  //得到域名 localhost</div></pre></td></tr></table></figure>
+<h3 id="三获取参数"><a href="#三获取参数" class="headerlink" title="三获取参数"></a>三获取参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.getQueryString();  //得到参数  id=6</div></pre></td></tr></table></figure>
+<h3 id="四获取项目名"><a href="#四获取项目名" class="headerlink" title="四获取项目名"></a>四获取项目名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.getContextPath();  //如果在tomcat的server中配置了项目的虚拟路径则会得到项目名，没有配置则为空。</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/java获取当前请求的url地址及各参数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Opencv-使用Rect选取与设置窗口ROI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/">Opencv 使用Rect选取与设置窗口ROI</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/" class="archive-article-date">
+  	<time datetime="2017-09-17T08:25:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="首先看一下Rect对象的定义："><a href="#首先看一下Rect对象的定义：" class="headerlink" title="首先看一下Rect对象的定义："></a><strong>首先看一下<em>Rect</em>对象的定义：</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef Rect_&lt;int&gt; Rect;</div></pre></td></tr></table></figure>
+<h4 id="再看Rect-的定义："><a href="#再看Rect-的定义：" class="headerlink" title="再看Rect_的定义："></a><strong>再看<em>Rect_</em>的定义：</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">/*!</div><div class="line">  The 2D up-right rectangle class</div><div class="line"></div><div class="line">  The class represents a 2D rectangle with coordinates of the specified data type.</div><div class="line">  Normally, cv::Rect ~ cv::Rect_&lt;int&gt; is used.</div><div class="line">*/</div><div class="line">template&lt;typename _Tp&gt; class Rect_</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    typedef _Tp value_type;</div><div class="line"></div><div class="line">    //! various constructors</div><div class="line">    Rect_();</div><div class="line">    Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height);</div><div class="line">    Rect_(const Rect_&amp; r);</div><div class="line">    Rect_(const CvRect&amp; r);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; org, const Size_&lt;_Tp&gt;&amp; sz);</div><div class="line">    Rect_(const Point_&lt;_Tp&gt;&amp; pt1, const Point_&lt;_Tp&gt;&amp; pt2);</div><div class="line"></div><div class="line">    Rect_&amp; operator = ( const Rect_&amp; r );</div><div class="line">    //! the top-left corner</div><div class="line">    Point_&lt;_Tp&gt; tl() const;</div><div class="line">    //! the bottom-right corner</div><div class="line">    Point_&lt;_Tp&gt; br() const;</div><div class="line"></div><div class="line">    //! size (width, height) of the rectangle</div><div class="line">    Size_&lt;_Tp&gt; size() const;</div><div class="line">    //! area (width*height) of the rectangle</div><div class="line">    _Tp area() const;</div><div class="line"></div><div class="line">    //! conversion to another data type</div><div class="line">    template&lt;typename _Tp2&gt; operator Rect_&lt;_Tp2&gt;() const;</div><div class="line">    //! conversion to the old-style CvRect</div><div class="line">    operator CvRect() const;</div><div class="line"></div><div class="line">    //! checks whether the rectangle contains the point</div><div class="line">    bool contains(const Point_&lt;_Tp&gt;&amp; pt) const;</div><div class="line"></div><div class="line">    _Tp x, y, width, height; //&lt; the top-left corner, as well as width and height of the rectangle</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="从上面的定义至少可以发现两点："><a href="#从上面的定义至少可以发现两点：" class="headerlink" title="从上面的定义至少可以发现两点："></a><strong>从上面的定义至少可以发现两点：</strong></h4><ul>
+<li>类Rect_的类模板中的数据类型<em>Tp在Rect</em><int>中被指定为整型</int></li>
+<li>从Rect_的构造函数可以看出，其形参列表一共有6种形式</li>
+</ul>
+<ol>
+<li>Rect_()，形参列表为空，即定义一个空窗口（默认值为：x=y=width=height=0）</li>
+<li>Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height)，定义一个左上角点坐标为(_x, _y)的_width*_height矩形窗口</li>
+<li>Rect<em>(const Rect</em>&amp; r)，使用其他的Rect_对象初始化</li>
+<li>Rect_(const CvRect&amp; r)，使用CvRect对象初始化</li>
+<li>Rect<em>(const Point</em><_tp>&amp; org, const Size_<_tp>&amp; sz)，分别将位置坐标(_x, _y)和窗口大小(_width, <em>height)用Point</em>和Size_对象初始化</_tp></_tp></li>
+<li>Rect<em>(const Point</em><_tp>&amp; pt1, const Point_<_tp>&amp; pt2)，分别将坐标位置(_x, _y)和窗口大小(_width, <em>height)用Point</em>和Point_对象初始化</_tp></_tp></li>
+<li>在OpenCV库中，图像像素坐标与所在行列数的对应关系为：x -&gt; col, y -&gt; row, width -&gt; cols, height -&gt; rows<h4 id="下面给出一段代码，基本可以把Rect的常见用法涵盖"><a href="#下面给出一段代码，基本可以把Rect的常见用法涵盖" class="headerlink" title="下面给出一段代码，基本可以把Rect的常见用法涵盖"></a><strong>下面给出一段代码，基本可以把<em>Rect</em>的常见用法涵盖</strong></h4></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Mat image = imread(&quot;C:\\Users\\Leo\\Desktop\\lena.jpg&quot;);</div><div class="line">Rect rect1(256, 256, 128, 128);</div><div class="line">Rect rect2(224, 224, 128, 128);</div><div class="line"></div><div class="line">Mat roi1;</div><div class="line">image(rect1).copyTo(roi1); // copy the region rect1 from the image to roi1</div><div class="line">imshow(&quot;1&quot;, roi1);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">Mat roi2;</div><div class="line">image(rect2).copyTo(roi2); // copy the region rect2 from the image to roi2</div><div class="line">imshow(&quot;2&quot;, roi2);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">cv::Rect rect3 = rect1&amp;rect2; // intersection of the two sets</div><div class="line">Mat roi3;</div><div class="line">image(rect3).copyTo(roi3);</div><div class="line">imshow(&quot;3&quot;, roi3);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">Rect rect4 = rect1|rect2; // union of the two sets (the minimum bounding rectangle)</div><div class="line">Mat roi4;</div><div class="line">image(rect4).copyTo(roi4);</div><div class="line">imshow(&quot;4&quot;, roi4);</div><div class="line">waitKey(0);</div><div class="line"></div><div class="line">Rect rect5(10, 10, 128, 128);</div><div class="line">roi1.copyTo(image(rect5)); // copy the region rect1 to the designated region in the image</div><div class="line">imshow(&quot;5&quot;, image);</div><div class="line">waitKey(0);</div></pre></td></tr></table></figure>
+<h4 id="结果为"><a href="#结果为" class="headerlink" title="结果为"></a><strong>结果为</strong></h4><p><img src="http://img.blog.csdn.net/20170917162355284?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="注：本文转自yhl-leo的CSDN博客"><a href="#注：本文转自yhl-leo的CSDN博客" class="headerlink" title="注：本文转自yhl_leo的CSDN博客"></a><strong>注：本文转自<a href="http://blog.csdn.net/yhl_leo/article/details/50593825" title="打开目标位置" target="_blank" rel="external">yhl_leo</a>的CSDN博客</strong></h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Opencv</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/17/Opencv-使用Rect选取与设置窗口ROI/">展开全文 >></a>
         </p>
       
 
@@ -252,7 +984,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -347,7 +1079,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -355,11 +1091,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -367,7 +1099,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -379,7 +1119,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -435,11 +1191,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
+              <a href="https://www.nwnu.edu.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>西北师范大学</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://jw1.nwnu.edu.cn/jpkc/2006/sjjg/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>王治和数据教授结构精品课程网站</a>
+            </li>
+          
+            <li class="search-li">
               <a href="http://blog.csdn.net/onesilver" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>一两银子的CSDN博客</a>
             </li>
           
             <li class="search-li">
-              <a href="https://www.nwnu.edu.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>西北师范大学</a>
+              <a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>清华大学开源镜像</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://mirror.bit.edu.cn/web/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>北京理工大学开源镜像</a>
             </li>
           
         </ul>
