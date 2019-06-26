@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://edsk.top">
-  <title>echarts中饼图的异步数据加载绘制 | 一两银子的博客</title>
+  <title>echarts中饼图的异步数据加载绘制 | 流星的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="ECharts 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行，但是从后台异步获取数据后，需要在前台根据不同的图表拼接成相应图表data的数据格式，一般常用的图表有折现图，柱状图，饼图。这里说明饼图的使用方法。饼图的数据和配置项如下">
 <meta name="keywords" content="echarts">
 <meta property="og:type" content="article">
 <meta property="og:title" content="echarts中饼图的异步数据加载绘制">
 <meta property="og:url" content="http://edsk.top/2017/09/07/echarts中饼图的异步数据加载绘制/index.html">
-<meta property="og:site_name" content="一两银子的博客">
+<meta property="og:site_name" content="流星的博客">
 <meta property="og:description" content="ECharts 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行，但是从后台异步获取数据后，需要在前台根据不同的图表拼接成相应图表data的数据格式，一般常用的图表有折现图，柱状图，饼图。这里说明饼图的使用方法。饼图的数据和配置项如下">
 <meta property="og:image" content="http://img.blog.csdn.net/20170907172919028?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb25lc2lsdmVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:updated_time" content="2018-02-04T14:28:11.873Z">
@@ -60,7 +60,7 @@ var _hmt = _hmt || [];
 			<img src="/assets/img/dsk.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">一两银子</a></h1>
+		  <h1 class="header-author"><a href="/">流星</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">大道至简，知易行难</p>
@@ -118,7 +118,7 @@ var _hmt = _hmt || [];
 				<img src="/assets/img/dsk.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">一两银子</h1>
+			  <h1 class="header-author js-header-author">流星</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>大道至简，知易行难<i class="icon icon-quo-right"></i></p>
@@ -349,7 +349,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 一两银子
+    		&copy; 2019 流星
     	</div>
       	<div class="footer-right">
           Powered by Hexo | Theme Yilia
@@ -453,35 +453,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">java ee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,19 +461,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">java ee</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,7 +493,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,11 +517,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color4">DWZ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,6 +526,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,7 +616,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">一两银子，one silver&lt;br&gt;education：武威一中，&lt;br&gt;NORTHWEST NORMAL UNIVERSITY&lt;br&gt;LanZhou,China.&lt;br&gt;C.S in Computer Science</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">杜世康，one silver&lt;br&gt;education：武威一中，&lt;br&gt;NORTHWEST NORMAL UNIVERSITY&lt;br&gt;LanZhou,China.&lt;br&gt;C.S in Computer Science</div>
   	  	
     	</section>
     
